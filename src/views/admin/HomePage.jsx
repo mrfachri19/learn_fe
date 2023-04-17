@@ -1,0 +1,153 @@
+import React from "react";
+import bgHead from "../../assets/images/Learnigan.png";
+import img1 from "../../assets/images/dietician-p-500.jpeg.png";
+import img2 from "../../assets/images/6254ae508d158f2138aaad76_Nav_Groceries_Products-added-1-p-500.png.png";
+import img3 from "../../assets/images/Nav_Cart-p-500.png.png";
+import img4 from "../../assets/images/Carousel---Flat-bread-p-500.png.png";
+import card from "../../assets/images/Cardd.png"
+function HomePage() {
+  return (
+    <>
+      <div className="bg-accentInformation-200">
+        <div className="mx-40">
+          <div className="grid grid-cols-2">
+            <div className="">
+              <div className="bg-white w-fit p-2 rounded-2xl mt-32">
+                <p className="text-xs text-accentInformation-200">
+                  Website Pembelajaran HTML & CSS
+                </p>
+              </div>
+              <h1 className="text-white font-bold text-5xl mt-5">
+                Learning is the only way to run the world.
+              </h1>
+              <p className="font-normal text-sm text-white mt-5">
+                Dapatkan keterampilan dasar dalam{" "}
+                <span className="block">
+                  membuat halaman web dengan instruksi{" "}
+                </span>{" "}
+                yang mudah diikuti
+              </p>
+              <div className="text-white p-2 w-fit rounded-xl bg-black mt-5">
+                Belajar Sekarang
+              </div>
+            </div>
+            <div className="mt-14">
+              <img src={bgHead} alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* section 2 */}
+      <div className="bg-grey-20">
+        <h5 className="text-center font-bold text-xl text-black pt-20">
+          Misi yang Harus Diselesaikan
+        </h5>
+        <div className="mx-40 mt-10 pb-12">
+          <div className="grid grid-cols-4">
+            <div className="py-4 px-20 rounded-lg border-accentInformation-200 border bg-white w-fit">
+              level 1
+            </div>
+            <div className="py-4 px-20  rounded-lg border-accentInformation-200 border bg-white w-fit">
+              level 2
+            </div>
+            <div className="py-4 px-20  rounded-lg border-accentInformation-200 border bg-white w-fit">
+              level 3
+            </div>
+            <div className="py-4 px-20  rounded-lg border-accentInformation-200 border bg-white w-fit">
+              level 4
+            </div>
+          </div>
+          <div className="grid grid-cols-4 mt-10">
+            <div className="py-4 px-20 rounded-lg border-accentInformation-200 border bg-white w-fit">
+              level 5
+            </div>
+            <div className="py-4 px-20  rounded-lg border-accentInformation-200 border bg-white w-fit">
+              level 6
+            </div>
+            <div className="py-4 px-20  rounded-lg border-accentInformation-200 border bg-white w-fit">
+              level 7
+            </div>
+            <div className="py-4 px-20  rounded-lg border-accentInformation-200 border bg-white w-fit">
+              level 8
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* section 3 */}
+      <div className="bg-white px-40">
+        <h5 className="text-center font-bold text-xl text-black pt-20">
+          Cara Untuk Menyelesaikan Misi
+        </h5>
+        <p className="text-center text-sm text-black mt-5">
+          Terdapat 4 step yang diperlukan untuk menyelesaikan misi pembelajaran{" "}
+        </p>
+        <div className="grid grid-cols-4 gap-x-8 mt-20 pb-20">
+          <div className="block">
+            <img src={img1} alt="" />
+            <h1 className="text-black font-bold text-base my-6">
+              1. Lakukan Pendaftaran{" "}
+            </h1>
+            <p className="text-sm text-black mt-5 justify-end">
+              Book for only £60. This includes your initial consultation and
+              review of your food diary. Follow up consultations are only £40.
+            </p>
+          </div>
+          <div className="block">
+            <img src={img2} alt="" />
+            <h1 className="text-black font-bold text-base my-6">
+              2. Pelajari Teori{" "}
+            </h1>
+            <p className="text-sm text-black mt-5 justify-end">
+              Place your orders through the app. Your dietician will share
+              shoppable recipes so you can have what you need in a couple of
+              clicks.
+            </p>
+          </div>
+          <div className="block">
+            <img src={img3} alt="" />
+            <h1 className="text-black font-bold text-base my-6">
+              3. Latihan Soal{" "}
+            </h1>
+            <p className="text-sm text-black mt-5 justify-end">
+              We have 1,000's of products to choose from. Buy in bulk for
+              significant savings.
+            </p>
+          </div>
+          <div className="block">
+            <img src={img4} alt="" />
+            <h1 className="text-black font-bold text-base my-6">
+              4. Dapatkan Reward{" "}
+            </h1>
+            <p className="text-sm text-black mt-5 justify-end">
+              Our recipes are step by step within the app and you can always
+              jump in and join one of our community chat groups.
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* section 4 */}
+      <div className="bg-accentInformation-200">
+        <div className="mx-40">
+          <div className="grid grid-cols-2 pb-14">
+            <div className="mt-40">
+              <h1 className="text-white font-bold text-5xl mt-5">
+                Ayo Kumpulkan Avatar!{" "}
+              </h1>
+              <p className="font-normal text-sm text-white mt-5">
+              Book for only £60. This includes your initial consultation and review of your food diary. Follow up consultations are only £40.
+              </p>
+              <div className="text-white p-2 w-fit rounded-xl bg-black mt-5">
+                Belajar Sekarang
+              </div>
+            </div>
+            <div className="mt-14">
+              <img src={card} alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default HomePage;
