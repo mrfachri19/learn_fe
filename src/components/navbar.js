@@ -1,7 +1,16 @@
 import React from "react";
-import logo from "../assets/images/Learnicon.png"
+import logo from "../assets/images/Learnicon.png";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Messaege } from "../helper/helper";
 const Navbar = () => {
+  const user = localStorage.getItem("token");
+  const LogOut = () => {
+    localStorage.clear();
+    Messaege("Succes", "Success Logout", "success");
+    setTimeout(() => {
+      window.location.href = "/auth/login";
+    }, 2000);
+  };
   return (
     <>
       <div className="h-20 bg-accentInformation-200 px-28">
@@ -9,7 +18,7 @@ const Navbar = () => {
           <div className="w-full text-gray-700">
             <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
               <div className="flex flex-row items-center justify-between p-4">
-                <img src={logo} alt="" className="w-10 h-10"/>
+                <img src={logo} alt="" className="w-10 h-10" />
                 <a
                   href="/admin"
                   className="text-lg font-semibold tracking-widest text-white uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"
@@ -50,23 +59,36 @@ const Navbar = () => {
                 >
                   Belajar
                 </a>
-
-                <div className="relative">
-                  <Link to="/auth/login">
-                  <button className="flex flex-row text-white bg-transparent border-2 border-white items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                    <span>Sign in</span>
-                  </button>
-                  </Link>
-            
-                </div>
-                <div className="relative">
-                  <Link to="/auth/register">
-                  <button className="flex flex-row text-white bg-transparent border-2 border-white items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                    <span>Sign up</span>
-                  </button>
-                  </Link>
-               
-                </div>
+                {user ? (
+                  <>
+                    <div className="relative">
+                      <button
+                        className="flex flex-row text-white bg-transparent border-2 border-white items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                        onClick={LogOut}
+                      >
+                        <span>Sign Out</span>
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {" "}
+                    <div className="relative">
+                      <Link to="/auth/login">
+                        <button className="flex flex-row text-white bg-transparent border-2 border-white items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                          <span>Sign in</span>
+                        </button>
+                      </Link>
+                    </div>
+                    <div className="relative">
+                      <Link to="/auth/register">
+                        <button className="flex flex-row text-white bg-transparent border-2 border-white items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                          <span>Sign up</span>
+                        </button>
+                      </Link>
+                    </div>
+                  </>
+                )}
               </nav>
             </div>
           </div>

@@ -70,51 +70,18 @@ const get =
 
 // ============= auth
 export const register = post("auth/register");
-export const registerDriver = post("authDriver/registerdriver");
 export const login = post("auth/login");
-export const loginDriver = post("authDriver/login-driver");
-
-// ============= merchant
-export const getListRestaurant = get("merchant")
-export const getListRestaurantId = get("merchant")
-export const merchantPost = post("merchant")
-
-// ============= menu
-export const getmenuIdMerchant = get("menu")
-export const PostMenu = post("menu")
-// ============= order
-export const postOrder = post("order");
-export const getAllOrder = get("order");
-// ============= organisasi
-export const postOrganisasi = post("organisasi");
-export const getAllORganisasi = get("organisasi");
-// ============= driver
-export const getAllDriver = get("driver");
-// ============= driver
-export const postArtikel = post("artikel");
-export const getArtikel = get("artikel");
-// ============= driver
-export const postFood = post("food");
-export const getFood = get("food");
-// ============= transasksi
-export const postTransaksi = post("transaksi");
+// ===============
+export const getIdUserProgress = get("progress-html");
+export const PostProgressUser = post("progress-html");
+export const updateProgressUser = patch("progress-html");
 
 const API = {
+  login,
   register,
-  registerDriver,
-  getListRestaurant,
-  getListRestaurantId,
-  getmenuIdMerchant,
-  merchantPost,
-  postOrder,
-  getAllOrder,
-  PostMenu,
-  getAllORganisasi,
-  getAllDriver,
-  postArtikel,
-  getArtikel,
-  postFood,
-  getFood
+  // ====
+  getIdUserProgress,
+  updateProgressUser
 };
 
 export default API;

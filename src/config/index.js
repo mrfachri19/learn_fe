@@ -3,7 +3,7 @@
 // simply run "npm run build" for production
 
 const APP = {
-  API_URL: "https://apilebihapp-production.up.railway.app"
+  API_URL: "http://localhost:3001"
 };
 
 export default APP;

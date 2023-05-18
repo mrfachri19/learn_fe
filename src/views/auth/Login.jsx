@@ -1,7 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import logo from "../../assets/images/logolearn.svg";
+import { PostProgressUser, login } from "../../api/index";
+import { useHistory } from "react-router-dom";
+import { Messaege } from "../../helper/helper";
 export const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+  const Login = async (e) => {
+    try {
+      e.preventDefault();
+      const response = await login({
+        email: email,
+        password: password,
+      });
+      localStorage.setItem("token", response.data.data.token);
+      localStorage.setItem("idUser", response.data.data.id);
+      Postprogress();
+      Messaege("Succes", "Success Login", "success");
+      setTimeout(() => {
+        history.push("/admin");
+      }, 2000);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
+
+  const Postprogress = async () => {
+    try {
+      const response = await PostProgressUser({
+        idUser: localStorage.getItem("idUser"),
+        progress1: 0,
+        progress2: 0,
+        progress3: 0,
+        progress4: 0,
+        progress5: 0,
+        progress6: 0,
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
   return (
     <>
       <div className="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full xl:w-full p-8  md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white">
@@ -23,15 +67,15 @@ export const LoginPage = () => {
                 className=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
                 type=""
                 placeholder="mail@gmail.com"
-                value="mail@gmail.com"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mt-8 content-center">
               <input
                 className="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
-                type=""
+                type="password"
                 placeholder="Enter your password"
-                value="*****|"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="flex items-center justify-between">
@@ -49,16 +93,17 @@ export const LoginPage = () => {
                   Remember me
                 </label>
               </div>
-              <div className="text-sm">
+              {/* <div className="text-sm">
                 <a href="#" className="text-indigo-400 hover:text-blue-500">
                   Forgot your password?
                 </a>
-              </div>
+              </div> */}
             </div>
             <div>
               <button
                 type="submit"
                 className="w-full flex justify-center bg-gradient-to-r from-indigo-600 to-accentInformation-200  hover:bg-gradient-to-l hover:from-blue-500 hover:to-indigo-600 text-gray-100 p-4  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500"
+                onClick={Login}
               >
                 Sign in
               </button>

@@ -1,13 +1,76 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import "./style.css";
 import logo from "../../assets/images/logolearn.svg";
+import { Messaege } from "../../helper/helper";
+import { register } from "../../api";
+import { Modal } from "antd";
+import Laki from "../../assets/images/laki.png";
+import Cewek from "../../assets/images/cewek.png";
+import { Button } from "antd";
+
 export const RegisterPage = () => {
+  const [namaDepan, setNamaDepan] = useState("");
+  const [namaBelakang, setNamaBelakang] = useState("");
+  const [email, setEmail] = useState("");
+  const [konfirmasiPassword, setKonfirmPassword] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+  const RegisterUser = async (e) => {
+    if (password == konfirmasiPassword) {
+      try {
+        e.preventDefault();
+        const response = await register({
+          namaDepan: namaDepan,
+          namaBelakang: namaBelakang,
+          email: email,
+          password: password,
+        });
+        Messaege("Succes", "Success Register", "success");
+        setTimeout(() => {
+          history.push("/login");
+        }, 2000);
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+        Messaege("Failed", `${error}`, "error");
+      }
+    } else {
+      Messaege("Failed", `password tidak sama`, "error");
+    }
+  };
+
+  // modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  function handlePilihcowo() {
+    localStorage.setItem("gambar", "01");
+    setIsModalOpen(false);
+  }
+  function handlePilihcewe() {
+    localStorage.setItem("gambar", "02");
+    setIsModalOpen(false);
+  }
+
+  useEffect(() => {
+    showModal();
+  }, []);
+
   return (
     <>
       <div className="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full xl:w-full p-8  md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white">
         <div className="max-w-md w-full">
           <div className="text-center">
-            <img src={logo} alt="" className="ml-14" />
+            <img src={logo} alt="" className="mx-28" />
             <h2 className="mt-6 text-3xl font-bold text-gray-900">
               Selamat Datang!
             </h2>
@@ -22,24 +85,24 @@ export const RegisterPage = () => {
               <input
                 className=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
                 type="text"
-                placeholder="your name"
-                value="mail@gmail.com"
+                placeholder="nama depan"
+                onChange={(e) => setNamaDepan(e.target.value)}
               />
             </div>
             <div className="relative">
               <input
                 className=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
                 type="text"
-                placeholder="your name"
-                value=""
+                placeholder="nama belakang"
+                onChange={(e) => setNamaBelakang(e.target.value)}
               />
             </div>
             <div className="relative">
               <input
                 className=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
                 type="email"
-                placeholder="mail@gmail.com"
-                value=""
+                placeholder="email"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mt-8 content-center">
@@ -47,7 +110,7 @@ export const RegisterPage = () => {
                 className="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
                 type="password"
                 placeholder="Enter your password"
-                value=""
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="mt-8 content-center">
@@ -55,7 +118,7 @@ export const RegisterPage = () => {
                 className="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
                 type="password"
                 placeholder="Konfirmasi password"
-                value=""
+                onChange={(e) => setKonfirmPassword(e.target.value)}
               />
             </div>
             <div className="flex items-center justify-between">
@@ -78,14 +141,15 @@ export const RegisterPage = () => {
               <button
                 type="submit"
                 className="w-full flex justify-center bg-gradient-to-r from-indigo-600 to-accentInformation-200  hover:bg-gradient-to-l hover:from-blue-500 hover:to-indigo-600 text-gray-100 p-4  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500"
+                onClick={RegisterUser}
               >
-                Sign in
+                Sign up
               </button>
             </div>
             <p className="flex flex-col items-center justify-center mt-10 text-center text-md text-gray-500">
               <span>Have an account?</span>
               <a
-                href="/admin/login"
+                href="/auth/login"
                 className="text-indigo-400 hover:text-blue-500 no-underline hover:underline cursor-pointer transition ease-in duration-300"
               >
                 Sign in
@@ -94,6 +158,35 @@ export const RegisterPage = () => {
           </form>
         </div>
       </div>
+      <Modal
+        title="Pilih Karakter mu"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <div className="w-full">
+          <div className="flex gap-10 mx-5">
+            <div className="block">
+              <img src={Laki} alt="" />
+              <Button
+                className="w-1/2 mt-3 mx-10 bg-accentInformation-200 text-white"
+                onClick={() => handlePilihcowo()}
+              >
+                Pilih
+              </Button>
+            </div>
+            <div className="block justify-center">
+              <img src={Cewek} alt="" />
+              <Button
+                className="w-1/2 mt-7 mx-10 bg-accentInformation-200 text-white"
+                onClick={() => handlePilihcewe()}
+              >
+                Pilih
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 };
