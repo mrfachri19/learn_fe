@@ -1,5 +1,5 @@
 import React from "react";
-import imgfoot from "../assets/images/Learnifix2.png";
+import logo from "../assets/images/Logo Lerni 1.png";
 import img1 from "../assets/images/dribbble.svg";
 import img2 from "../assets/images/behance.svg";
 import img3 from "../assets/images/githubb.svg";
@@ -10,7 +10,7 @@ function footer() {
     <div className="bg-accentInformation-200">
       <div className="mx-40 grid grid-cols-2 py-10">
         <div className="block">
-          <img src={imgfoot} alt="" />
+          <img src={logo} alt="" />
           <p className="text-sm text-white mt-8">
             Dapatkan keterampilan dasar dalam membuat{" "}
             <span className="block">

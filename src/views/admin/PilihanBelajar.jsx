@@ -7,9 +7,12 @@ import { Link } from "react-router-dom";
 import { Modal } from "antd";
 import Laki from "../../assets/images/laki.png";
 import Cewek from "../../assets/images/cewek.png";
+import { getIdUser } from "../../api";
+import bgimage from "../../assets/images/Frame 4 (2).png";
 
 function PilihanBelajar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [gambar, setGambar] = useState('')
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -19,7 +22,19 @@ function PilihanBelajar() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  const getId = async () => {
+    try {
+      const response = await getIdUser(`/${localStorage.getItem('idUser')}`);
+      setGambar(response.data.data[0].karakter)
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
+    getId();
     showModal();
   }, []);
   return (
@@ -98,14 +113,16 @@ function PilihanBelajar() {
         onCancel={handleCancel}
         width={900}
       >
-        <div className="w-full">
-          <div className="flex gap-3 mx-2">
-            <div className="flex justify-center">
+        <div className="w-full h-80">
+        <img className="absolute h-96 z-0 " src={bgimage} alt="" />
+          <div className="flex gap-3 mx-5">
+            <div className="flex">
               <img
-                src={localStorage.getItem("gambar") == "01" ? Laki : Cewek}
+                src={gambar == "boy01" ? Laki : Cewek}
+                className="absolute"
                 alt=""
               />
-              <div className="block">
+              <div className="block ml-56">
                 <h1 className="text-[#7C7C80] text-xl mt-6 font-bold">
                   Selamat Datang di Learniverse!
                 </h1>

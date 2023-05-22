@@ -71,6 +71,8 @@ const get =
 // ============= auth
 export const register = post("auth/register");
 export const login = post("auth/login");
+export const getIdUser = get("auth");
+
 // ===============
 export const getIdUserProgress = get("progress-html");
 export const PostProgressUser = post("progress-html");

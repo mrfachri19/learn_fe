@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./style.css";
 import logo from "../../assets/images/logolearn.svg";
 import { PostProgressUser, login } from "../../api/index";
 import { useHistory } from "react-router-dom";
@@ -17,6 +16,13 @@ export const LoginPage = () => {
       });
       localStorage.setItem("token", response.data.data.token);
       localStorage.setItem("idUser", response.data.data.id);
+      localStorage.setItem("nama", response.data.data.name);
+      localStorage.setItem("namalengkap", response.data.data.namaPengguna);
+      localStorage.setItem("alamat", response.data.data.alamat);
+      localStorage.setItem("tentang", response.data.data.tentang);
+      localStorage.setItem("gender", response.data.data.char);
+      localStorage.setItem("tanggaldibuat", response.data.data.createdby);
+
       Postprogress();
       Messaege("Succes", "Success Login", "success");
       setTimeout(() => {

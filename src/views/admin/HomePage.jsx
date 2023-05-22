@@ -1,10 +1,14 @@
 import React from "react";
-import bgHead from "../../assets/images/Learnigan.png";
-import img1 from "../../assets/images/dietician-p-500.jpeg.png";
-import img2 from "../../assets/images/6254ae508d158f2138aaad76_Nav_Groceries_Products-added-1-p-500.png.png";
-import img3 from "../../assets/images/Nav_Cart-p-500.png.png";
-import img4 from "../../assets/images/Carousel---Flat-bread-p-500.png.png";
-import card from "../../assets/images/Cardd.png"
+import bgHead from "../../assets/images/Group 40.png";
+import img1 from "../../assets/images/1. Lakukan Pendaftaran.png";
+import img2 from "../../assets/images/2. Pelajari Teori.png";
+import img3 from "../../assets/images/3. Latihan Soal.png";
+import img4 from "../../assets/images/4. Dapatkan Reward.png";
+import card from "../../assets/images/Boy1.png";
+import card1 from "../../assets/images/Girl1.png";
+import card2 from "../../assets/images/Boy2.png";
+import card3 from "../../assets/images/Girl2.png";
+
 function HomePage() {
   return (
     <>
@@ -129,19 +133,23 @@ function HomePage() {
       <div className="bg-accentInformation-200">
         <div className="mx-40">
           <div className="grid grid-cols-2 pb-14">
-            <div className="mt-40">
+            <div className="mt-40 mr-3">
               <h1 className="text-white font-bold text-5xl mt-5">
                 Ayo Kumpulkan Avatar!{" "}
               </h1>
               <p className="font-normal text-sm text-white mt-5">
-              Book for only £60. This includes your initial consultation and review of your food diary. Follow up consultations are only £40.
+                Book for only £60. This includes your initial consultation and
+                review of your food diary. Follow up consultations are only £40.
               </p>
               <div className="text-white p-2 w-fit rounded-xl bg-black mt-5">
                 Belajar Sekarang
               </div>
             </div>
-            <div className="mt-14">
+            <div className="mt-14 grid grid-cols-2 gap-5">
               <img src={card} alt="" />
+              <img src={card1} alt="" />
+              <img src={card2} alt="" />
+              <img src={card3} alt="" />
             </div>
           </div>
         </div>

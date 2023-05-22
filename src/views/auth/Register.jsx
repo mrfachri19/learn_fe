@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import "./style.css";
 import logo from "../../assets/images/logolearn.svg";
 import { Messaege } from "../../helper/helper";
 import { register } from "../../api";
 import { Modal } from "antd";
 import Laki from "../../assets/images/laki.png";
 import Cewek from "../../assets/images/cewek.png";
+import bgimage from "../../assets/images/Frame 4 (2).png";
 import { Button } from "antd";
 
 export const RegisterPage = () => {
@@ -15,6 +15,10 @@ export const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [konfirmasiPassword, setKonfirmPassword] = useState("");
   const [password, setPassword] = useState("");
+  const [karakter, setKarakter] = useState("");
+  const [tentang, setTentang] = useState("");
+  const [alamat, setAlamat] = useState("");
+
   const history = useHistory();
   const RegisterUser = async (e) => {
     if (password == konfirmasiPassword) {
@@ -25,10 +29,13 @@ export const RegisterPage = () => {
           namaBelakang: namaBelakang,
           email: email,
           password: password,
+          karakter: karakter,
+          tentang: tentang,
+          alamat: alamat,
         });
         Messaege("Succes", "Success Register", "success");
         setTimeout(() => {
-          history.push("/login");
+          history.push("auth/login");
         }, 2000);
         console.log(response);
       } catch (error) {
@@ -53,11 +60,11 @@ export const RegisterPage = () => {
   };
 
   function handlePilihcowo() {
-    localStorage.setItem("gambar", "01");
+    setKarakter("boy01");
     setIsModalOpen(false);
   }
   function handlePilihcewe() {
-    localStorage.setItem("gambar", "02");
+    setKarakter("girl01");
     setIsModalOpen(false);
   }
 
@@ -95,6 +102,22 @@ export const RegisterPage = () => {
                 type="text"
                 placeholder="nama belakang"
                 onChange={(e) => setNamaBelakang(e.target.value)}
+              />
+            </div>
+            <div className="relative">
+              <textarea
+                className=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
+                type="text"
+                placeholder="Tentang"
+                onChange={(e) => setTentang(e.target.value)}
+              />
+            </div>
+            <div className="relative">
+              <input
+                className=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
+                type="text"
+                placeholder="Alamat"
+                onChange={(e) => setAlamat(e.target.value)}
               />
             </div>
             <div className="relative">
@@ -163,22 +186,25 @@ export const RegisterPage = () => {
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
+        width={700}
       >
-        <div className="w-full">
-          <div className="flex gap-10 mx-5">
+        <div className="">
+          <img className="absolute h-72 z-0" src={bgimage} alt="" />
+
+          <div className="flex gap-10 justify-center">
             <div className="block">
-              <img src={Laki} alt="" />
+              <img src={Laki} className="h-52 absolute" alt="" />
               <Button
-                className="w-1/2 mt-3 mx-10 bg-accentInformation-200 text-white"
+                className="w-1/2 mt-56 mx-10 bg-accentInformation-200 text-white"
                 onClick={() => handlePilihcowo()}
               >
                 Pilih
               </Button>
             </div>
-            <div className="block justify-center">
-              <img src={Cewek} alt="" />
+            <div className="block">
+              <img src={Cewek} className="h-52 absolute" alt="" />
               <Button
-                className="w-1/2 mt-7 mx-10 bg-accentInformation-200 text-white"
+                className="w-1/2 mt-56 mx-10 bg-accentInformation-200 text-white"
                 onClick={() => handlePilihcewe()}
               >
                 Pilih
