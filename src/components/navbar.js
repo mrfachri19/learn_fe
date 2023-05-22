@@ -13,7 +13,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="h-20 bg-accentInformation-200 px-28">
+      <div className="h-15 bg-accentInformation-200 px-28">
         <div className="antialiased ">
           <div className="w-full text-gray-700">
             <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Laki from "../../assets/images/laki.png";
 import Cewek from "../../assets/images/cewek.png";
 import { getIdUser } from "../../api";
@@ -20,7 +20,9 @@ const Tab1 = () => {
         <hr className="mt-3" />
         <div class="mb-3 text-lg font-bold">Jenis Kelamin: </div>
         <div class="text-sm text-neutral-600">
-          {localStorage.getItem("gender") == 'boy01' ? "laki-laki" : "perempuan"}
+          {localStorage.getItem("gender") == "boy01"
+            ? "laki-laki"
+            : "perempuan"}
         </div>
         <hr className="mt-3" />
         <div class="mb-3 text-lg font-bold">Tanggal Bergabung: </div>
@@ -43,22 +45,41 @@ const Tab1 = () => {
   );
 };
 
+const Tab2 = () => {
+  return (
+    <>
+      <div class="mt-4 mb-6">
+        <div class="mb-3 text-lg font-bold">Kemampuan dimiliki: </div>
+        <div class="text-sm text-neutral-600">Html dan CSS </div>
+      </div>
+    </>
+  );
+};
+
+const pencapaian = () => {
+  return (
+    <>
+      <div class="mt-4 mb-6">
+        <div class="mb-3 text-lg font-bold">
+          Pencapaian {localStorage.getItem("nama")}:{" "}
+        </div>
+      </div>
+    </>
+  );
+};
+const sertifikat = () => {
+  return (
+    <>
+      <div class="mt-4 mb-6">
+        <div class="mb-3 text-lg font-bold">
+          Sertifikat {localStorage.getItem("nama")}:{" "}
+        </div>
+      </div>
+    </>
+  );
+};
+
 function Profile() {
-  const [gambar, setGambar] = useState("");
-  const getId = async () => {
-    try {
-      const response = await getIdUser(`/${localStorage.getItem("idUser")}`);
-      setGambar(response.data.data[0].karakter);
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getId();
-  }, []);
-
   // tabs
   const onChange = (key) => {
     console.log(key);
@@ -73,7 +94,20 @@ function Profile() {
     {
       key: "2",
       label: `Kemampuan`,
-      children: `Content of Tab Pane 2`,
+      children: Tab2(),
+    },
+  ];
+
+  const items2 = [
+    {
+      key: "1",
+      label: `Rincian`,
+      children: pencapaian(),
+    },
+    {
+      key: "2",
+      label: `Kemampuan`,
+      children: sertifikat(),
     },
   ];
 
@@ -86,7 +120,9 @@ function Profile() {
               <div className="w-full px-4 flex justify-center">
                 <div className="relative">
                   <img
-                    src={gambar == "boy01" ? Laki : Cewek}
+                    src={
+                      localStorage.getItem("gender") == "boy01" ? Laki : Cewek
+                    }
                     className="shadow-xl rounded-full h-auto align-middle border-none max-w-150-px"
                     alt=""
                   />
@@ -107,6 +143,9 @@ function Profile() {
         {" "}
         <div class="rounded-xl border p-5 shadow-md bg-white">
           <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+        </div>
+        <div class="rounded-xl border my-10 p-5 shadow-md bg-white">
+          <Tabs defaultActiveKey="1" items={items2} onChange={onChange} />
         </div>
       </div>
     </div>
