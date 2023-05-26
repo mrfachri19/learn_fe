@@ -8,7 +8,7 @@ import img4 from "../assets/images/linkedin.svg";
 function footer() {
   return (
     <div className="bg-accentInformation-200">
-      <div className="mx-40 grid grid-cols-2 py-10">
+      <div className="md:mx-40 mx-5 grid grid-cols-2 py-10">
         <div className="block">
           <img src={logo} alt="" />
           <p className="text-sm text-white mt-8">
@@ -27,7 +27,7 @@ function footer() {
             <img src={img3} alt="" />
             <img src={img4} alt="" />
           </div>
-          <div className="flex gap-x-5 ml-auto mt-10">
+          <div className="md:flex md:gap-x-5 ml-auto mt-10 block">
             <p className="text-xs text-white">Terms of Service</p>
             <p className="text-xs text-white">Privacy Policy</p>
             <p className="text-xs text-white">Cookie Policy</p>

@@ -17,7 +17,7 @@ const Navbar = () => {
         <div className="antialiased ">
           <div className="w-full text-gray-700">
             <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
-              <div className="flex flex-row items-center justify-between p-4">
+              <div className="flex flex-row  items-center justify-between p-4">
                 <a href="/admin">
                   <img src={logo} alt="" />
                 </a>
@@ -62,6 +62,12 @@ const Navbar = () => {
                       href="/admin/profile"
                     >
                       Profile
+                    </a>
+                    <a
+                      className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline text-white"
+                      href="/admin/leaderboard"
+                    >
+                      LeaderBoard
                     </a>
                     <div className="relative">
                       <button

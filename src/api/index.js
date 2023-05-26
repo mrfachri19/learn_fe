@@ -72,6 +72,7 @@ const get =
 export const register = post("auth/register");
 export const login = post("auth/login");
 export const getIdUser = get("auth");
+export const getAlluser = get("auth");
 
 // ===============
 export const getIdUserProgress = get("progress-html");
@@ -83,7 +84,8 @@ const API = {
   register,
   // ====
   getIdUserProgress,
-  updateProgressUser
+  updateProgressUser,
+  getAlluser
 };
 
 export default API;

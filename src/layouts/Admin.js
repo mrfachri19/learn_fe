@@ -37,6 +37,8 @@ import SoalTabel4 from "../views/admin/soal/SoalTabel4";
 import TeoriPage10 from "../views/admin/teori/TeoriPage10";
 import SoalTabel5 from "../views/admin/soal/SoalTabel5";
 import SoalTabel6 from "../views/admin/soal/SoalTabel6";
+import LeaderBoard from "../views/admin/LeaderBoard";
+import Shop from "../views/admin/Shop";
 
 export default function Admin() {
  
@@ -53,7 +55,11 @@ export default function Admin() {
             <Switch>
               <Route path="/admin" exact component={HomePage} />
               <Route path="/admin/profile" exact component={Profile} />
+              <Route path="/admin/leaderboard" exact component={LeaderBoard} />
               <Route path="/admin/pilihan-belajar" exact component={PilihanBelajar} />
+              <Route path="/admin/shop" exact component={Shop} />
+
+{/* ================== */}
               <Route path="/admin/html" exact component={HtmlPage} />
               <Route path="/admin/teori-1" exact component={TeoriPage1} />
               <Route path="/admin/soal-1" exact component={Soal1} />
