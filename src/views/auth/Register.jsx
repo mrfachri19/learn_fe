@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import logo from "../../assets/images/logolearn.svg";
 import { Messaege } from "../../helper/helper";
-import { register } from "../../api";
+import { PostProgressUser, postShopuser, register } from "../../api";
 import { Modal } from "antd";
 import Laki from "../../assets/images/laki.png";
 import Cewek from "../../assets/images/cewek.png";
@@ -30,10 +30,11 @@ export const RegisterPage = () => {
           email: email,
           password: password,
           karakter: karakter,
-          tentang: tentang,
-          alamat: alamat,
+          point: 0,
         });
         Messaege("Succes", "Success Register", "success");
+        Postprogress(response.data.data.id);
+        postShopUser(response.data.data.id);
         setTimeout(() => {
           history.push("auth/login");
         }, 2000);
@@ -72,12 +73,47 @@ export const RegisterPage = () => {
     showModal();
   }, []);
 
+  const Postprogress = async (id) => {
+    try {
+      const response = await PostProgressUser({
+        idUser: id,
+        progress1: 0,
+        progress2: 0,
+        progress3: 0,
+        progress4: 0,
+        progress5: 0,
+        progress6: 0,
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
+
+  const postShopUser = async (id) => {
+    try {
+      const response = await postShopuser({
+        idUser: id,
+        boy01: "ada",
+        boy02: "tidak",
+        boy03: "tidak",
+        girl01: "ada",
+        girl02: "tidak",
+        girl03: "tidak",
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full xl:w-full p-8  md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white">
         <div className="max-w-md w-full">
-          <div className="text-center">
-            <img src={logo} alt="" className="mx-28" />
+          <img src={logo} alt="" className="m-auto" />
+          <div className="text-center m-auto md:text-center">
             <h2 className="mt-6 text-3xl font-bold text-gray-900">
               Selamat Datang!
             </h2>
@@ -104,22 +140,7 @@ export const RegisterPage = () => {
                 onChange={(e) => setNamaBelakang(e.target.value)}
               />
             </div>
-            <div className="relative">
-              <textarea
-                className=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
-                type="text"
-                placeholder="Tentang"
-                onChange={(e) => setTentang(e.target.value)}
-              />
-            </div>
-            <div className="relative">
-              <input
-                className=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
-                type="text"
-                placeholder="Alamat"
-                onChange={(e) => setAlamat(e.target.value)}
-              />
-            </div>
+
             <div className="relative">
               <input
                 className=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"

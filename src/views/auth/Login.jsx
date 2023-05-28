@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../assets/images/logolearn.svg";
-import { PostProgressUser, login } from "../../api/index";
+import { login } from "../../api/index";
 import { useHistory } from "react-router-dom";
 import { Messaege } from "../../helper/helper";
 export const LoginPage = () => {
@@ -18,12 +18,8 @@ export const LoginPage = () => {
       localStorage.setItem("idUser", response.data.data.id);
       localStorage.setItem("nama", response.data.data.name);
       localStorage.setItem("namalengkap", response.data.data.namaPengguna);
-      localStorage.setItem("alamat", response.data.data.alamat);
-      localStorage.setItem("tentang", response.data.data.tentang);
+      localStorage.setItem("email", response.data.data.email);
       localStorage.setItem("gender", response.data.data.char);
-      localStorage.setItem("tanggaldibuat", response.data.data.createdby);
-
-      Postprogress();
       Messaege("Succes", "Success Login", "success");
       setTimeout(() => {
         history.push("/admin");
@@ -35,29 +31,12 @@ export const LoginPage = () => {
     }
   };
 
-  const Postprogress = async () => {
-    try {
-      const response = await PostProgressUser({
-        idUser: localStorage.getItem("idUser"),
-        progress1: 0,
-        progress2: 0,
-        progress3: 0,
-        progress4: 0,
-        progress5: 0,
-        progress6: 0,
-      });
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-      Messaege("Failed", `${error}`, "error");
-    }
-  };
   return (
     <>
       <div className="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full xl:w-full p-8  md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white">
         <div className="max-w-md w-full">
+          <img src={logo} alt="" className="m-auto" />
           <div className="text-center">
-            <img src={logo} alt="" className="ml-14" />
             <h2 className="mt-6 text-3xl font-bold text-gray-900">
               Selamat Datang!
             </h2>

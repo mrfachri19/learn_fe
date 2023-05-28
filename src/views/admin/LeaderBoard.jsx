@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import medali3 from "../../assets/images/Medali 5.png";
 import medali2 from "../../assets/images/Medali 4.png";
 import medali1 from "../../assets/images/Medali 1.png";
-import { getAlluser } from "../../api";
+import { getAlluser, getIdUser } from "../../api";
 
 function LeaderBoard() {
   const [user, setUser] = useState([]);
   const [user1, setUser1] = useState([]);
+  const [gambar, setGambar] = useState("");
 
   const getAllUserLeaderboard = async () => {
     try {
@@ -42,6 +43,20 @@ function LeaderBoard() {
     getAllUserLeaderboard();
   }, []);
 
+  const getId = async () => {
+    try {
+      const response = await getIdUser(`/${localStorage.getItem("idUser")}`);
+      setGambar(response.data.data[0].karakter);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getId();
+  }, []);
+
   return (
     <div className="mx-32">
       <div className="grid grid-cols-3 my-20">
@@ -52,18 +67,20 @@ function LeaderBoard() {
               alt=""
               className="ml-auto"
             />
-            <img
-              class="w-28 mx-auto rounded-full border-8 border-white"
-              src="https://avatars.githubusercontent.com/u/67946056?v=4"
-              alt=""
-            />
+                {gambar == "boy01" ? (
+                <img src={'https://i.postimg.cc/rm7zTfjF/laki.png'} className="w-28 mx-auto rounded-full border-8 border-white" alt="" />
+              ) : "girl01" ? (
+                <img src={'https://i.postimg.cc/T2m3mqQg/cewek.png'} className="w-28 mx-auto rounded-full border-8 border-white" alt="" />
+              ) : (
+                ""
+              )}
             <div class="text-center mt-2 text-base font-medium">
               {item.namaDepan + " " + item.namaBelakang}
             </div>
             <div class="text-center mt-2 font-light text-sm">
               {item.namaDepan}
             </div>
-            <div class="text-center font-normal text-sm">email</div>
+            <div class="text-center font-normal text-sm">{localStorage.getItem('email')}</div>
             <hr class="mt-3" />
             <div class="flex p-4">
               <div class="w-1/2 text-center text-sm ">

@@ -2,11 +2,56 @@ import React, { useState } from "react";
 import { Radio, Space } from "antd";
 import { Link } from "react-router-dom";
 import { Send20Filled } from "@fluentui/react-icons";
+import { Messaege } from "../../../helper/helper";
+import { updateProgressUser, updateUserPoint } from "../../../api";
 function SoalTag5() {
   const [value, setValue] = useState(1);
   const onChange = (e) => {
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
+  };
+  const [sukses, setSukses] = useState();
+
+  const Submit = () => {
+    if (value == 4) {
+      Messaege("Succes", "jawaban benar", "success");
+      updateprogressUser();
+      updateUser();
+      // history.push("/admin/teori");
+    } else {
+      Messaege("Failed", `jawaban salah`, "error");
+    }
+  };
+
+  const updateprogressUser = async () => {
+    try {
+      const response = await updateProgressUser(
+        `/${localStorage.getItem("idUser")}`,
+        {
+          idUser: localStorage.getItem("idUser"),
+          progress2: 100,
+        }
+      );
+      console.log(response);
+      setSukses(response.data.status);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
+  const updateUser = async () => {
+    try {
+      const response = await updateUserPoint(
+        `/${localStorage.getItem("idUser")}`,
+        {
+          point: 100 * 2,
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
   };
   return (
     <>
@@ -63,6 +108,7 @@ function SoalTag5() {
             <div
               className="rounded-full w-10 h-10 bg-red-700 pt-1 ml-auto"
               style={{ paddingLeft: "14px" }}
+              onClick={Submit}
             >
               <Send20Filled className="w-3 text-white" height="50%" />
             </div>
@@ -78,14 +124,18 @@ function SoalTag5() {
             Sebelumnya
           </a>
         </Link>
-        <Link to="/admin/teori-5">
-          <a
-            target="_blank"
-            className="block w-28 px-4 py-3 text-sm font-medium tracking-wide text-center transition-colors duration-300 transform bg-slate-100 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
-          >
-            Selanjutnya
-          </a>
-        </Link>
+        {sukses == 200 ? (
+          <Link to="/admin/teori-5">
+            <a
+              target="_blank"
+              className="block w-28 px-4 py-3 text-sm font-medium tracking-wide text-center transition-colors duration-300 transform bg-slate-100 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
+            >
+              Selanjutnya
+            </a>
+          </Link>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

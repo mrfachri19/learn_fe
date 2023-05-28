@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { LoginPage } from "../views/auth/Login";
 import { RegisterPage } from "../views/auth/Register";
 import Navbar from "../components/navbar";
-
+import "./style.css"
 export default function Auth() {
   const renderLoader = () => <p>Loading</p>;
 
@@ -13,7 +13,7 @@ export default function Auth() {
       <div className="relative min-h-screen flex ">
         <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-white">
           <div
-            className="sm:w-1/2 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-accentInformation-200 text-white bg-no-repeat bg-cover relative"
+            className="sm:w-1/2 xl:w-3/5 h-full hidden md:flex flex-auto items-center px-20 p-10 overflow-hidden bg-accentInformation-200 text-white bg-no-repeat bg-cover relative"
             style={{
               backgroundImage: `https://images.unsplash.com/photo-1579451861283-a2239070aaa9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80`,
             }}

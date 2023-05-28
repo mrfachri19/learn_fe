@@ -73,19 +73,28 @@ export const register = post("auth/register");
 export const login = post("auth/login");
 export const getIdUser = get("auth");
 export const getAlluser = get("auth");
+export const updateUserPoint = patch("auth");
 
 // ===============
 export const getIdUserProgress = get("progress-html");
 export const PostProgressUser = post("progress-html");
 export const updateProgressUser = patch("progress-html");
 
+// ===============
+export const getidShop = get("shop");
+export const postShopuser = post("shop");
+export const updateShopuser = patch("shop");
 const API = {
   login,
   register,
   // ====
   getIdUserProgress,
   updateProgressUser,
-  getAlluser
+  getAlluser,
+  postShopuser,
+  getidShop,
+  updateShopuser,
+  updateUserPoint
 };
 
 export default API;

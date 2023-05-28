@@ -31,11 +31,11 @@ function HomePage() {
                 </span>{" "}
                 yang mudah diikuti
               </p>
-              <div className="text-white p-2 w-fit rounded-xl md:text-base text-xs bg-black mt-5 mb-5">
+              <div className="text-white p-2 w-fit rounded-xl md:text-base mb-5 text-xs bg-black mt-5">
                 Belajar Sekarang
               </div>
             </div>
-            <div className="mt-14">
+            <div className="md:mt-5 mt-16 -mb-12">
               <img src={bgHead} alt="" />
             </div>
           </div>

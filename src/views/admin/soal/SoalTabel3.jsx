@@ -1,7 +1,39 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Send20Filled } from "@fluentui/react-icons";
+import { Messaege } from "../../../helper/helper";
+import { updateProgressUser } from "../../../api";
 function SoalTabel3() {
+  const history = useHistory();
+  const jawaban = 'border="2" width="750"';
+  const [text, setText] = useState("");
+  const [sukses, setSukses] = useState();
+  const Submit = () => {
+    if (text == jawaban) {
+      Messaege("Succes", "jawaban benar", "success");
+      updateprogressUser();
+      // history.push("/admin/soal-2");
+    } else {
+      Messaege("Failed", `jawaban salah`, "error");
+    }
+  };
+
+  const updateprogressUser = async () => {
+    try {
+      const response = await updateProgressUser(
+        `/${localStorage.getItem("idUser")}`,
+        {
+          idUser: localStorage.getItem("idUser"),
+          progress4: 50,
+        }
+      );
+      console.log(response.data.status);
+      setSukses(response.data.status);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
   return (
     <>
       <h5 className="md:ml-40 text-accentInformation-200">
@@ -37,12 +69,10 @@ function SoalTabel3() {
                 {"<Table"}
                 <input
                   type="text"
-                  className="w-28 rounded-lg border-0 border-b border-gray-400 p-2"
+                  className="w-56 rounded-lg border-0 border-b border-gray-400 p-2"
+                  onChange={(e) => setText(e.target.value)}
                 />
-                <input
-                  type="text"
-                  className="w-28 rounded-lg border-0 border-b border-gray-400 p-2"
-                />
+
                 {">"}
               </span>
               <span className="text-sm text-black block">{"<tr>"}</span>
@@ -70,6 +100,7 @@ function SoalTabel3() {
             <div
               className="rounded-full w-10 h-10 bg-red-700 pt-1 ml-auto"
               style={{ paddingLeft: "14px" }}
+              onClick={Submit}
             >
               <Send20Filled className="w-3 text-white" height="50%" />
             </div>
@@ -77,7 +108,7 @@ function SoalTabel3() {
         </div>
       </div>
       <div className="flex items-center justify-center mt-5 mb-10">
-        <Link to="/admin/soal-tag3">
+        <Link to="/admin/soal-tabel2">
           <a
             target="_blank"
             className="block w-28 px-4 py-3 text-sm font-medium tracking-wide text-center transition-colors duration-300 transform bg-slate-100 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
@@ -85,14 +116,18 @@ function SoalTabel3() {
             Sebelumnya
           </a>
         </Link>
-        <Link to="/admin/soal-tabel4">
-          <a
-            target="_blank"
-            className="block w-28 px-4 py-3 text-sm font-medium tracking-wide text-center transition-colors duration-300 transform bg-slate-100 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
-          >
-            Selanjutnya
-          </a>
-        </Link>
+        {sukses == 200 ? (
+          <Link to="/admin/soal-tabel4">
+            <a
+              target="_blank"
+              className="block w-28 px-4 py-3 text-sm font-medium tracking-wide text-center transition-colors duration-300 transform bg-slate-100 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
+            >
+              Selanjutnya
+            </a>
+          </Link>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

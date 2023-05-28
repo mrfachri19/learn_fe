@@ -12,7 +12,7 @@ import bgimage from "../../assets/images/Frame 4 (2).png";
 
 function PilihanBelajar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [gambar, setGambar] = useState('')
+  const [gambar, setGambar] = useState("");
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -25,8 +25,8 @@ function PilihanBelajar() {
 
   const getId = async () => {
     try {
-      const response = await getIdUser(`/${localStorage.getItem('idUser')}`);
-      setGambar(response.data.data[0].karakter)
+      const response = await getIdUser(`/${localStorage.getItem("idUser")}`);
+      setGambar(response.data.data[0].karakter);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -39,8 +39,8 @@ function PilihanBelajar() {
   }, []);
   return (
     <>
-      <div className="my-10 m-auto flex mx-32">
-        <div className="w-full max-w-md  mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
+      <div className="my-10 m-auto md:flex md:justify-center gap-10">
+        <div className="w-full max-w-md bg-white rounded-3xl shadow-xl overflow-hidden">
           <div className="max-w-md mx-auto">
             <img src={html} alt="" />
             <div className="p-4 sm:p-6">
@@ -73,7 +73,7 @@ function PilihanBelajar() {
           </div>
         </div>
 
-        <div className="w-full max-w-md  mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
+        <div className="w-full max-w-md bg-white rounded-3xl shadow-xl overflow-hidden">
           <div className="max-w-md mx-auto">
             <img src={css} alt="" />
             <div className="p-4 sm:p-6">
@@ -113,16 +113,18 @@ function PilihanBelajar() {
         onCancel={handleCancel}
         width={900}
       >
-        <div className="w-full h-80">
-        <img className="absolute h-96 z-0 " src={bgimage} alt="" />
-          <div className="flex gap-3 mx-5">
-            <div className="flex">
-              <img
-                src={gambar == "boy01" ? Laki : Cewek}
-                className="absolute"
-                alt=""
-              />
-              <div className="block ml-56">
+        <div className="w-full md:h-80 h-fit">
+          <img className="absolute h-96 z-0 " src={bgimage} alt="" />
+          <div className="mx-5">
+            <div className="">
+              {gambar == "boy01" ? (
+                <img src={'https://i.postimg.cc/rm7zTfjF/laki.png'} className="md:absolute" alt="" />
+              ) : "girl01" ? (
+                <img src={'https://i.postimg.cc/T2m3mqQg/cewek.png'} className="md:absolute" alt="" />
+              ) : (
+                ""
+              )}
+              <div className="block md:ml-56">
                 <h1 className="text-[#7C7C80] text-xl mt-6 font-bold">
                   Selamat Datang di Learniverse!
                 </h1>

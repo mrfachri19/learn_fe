@@ -5,6 +5,10 @@ import { Messaege } from "../../helper/helper";
 import { getIdUserProgress } from "../../api";
 function HtmlPage() {
   const [progress, setprogress] = useState();
+  const [progress2, setprogress2] = useState();
+  const [progress3, setprogress3] = useState();
+  const [progress4, setprogress4] = useState();
+
   const data = [
     {
       nama: "Berkenalan Dengan HTML",
@@ -13,18 +17,18 @@ function HtmlPage() {
     },
     {
       nama: "Tag, Atribut dan Elemen Pada HTML",
-      link: "/admin/teori-1",
-      progress: "0",
+      link: "/admin/teori",
+      progress: progress2,
     },
     {
       nama: "Struktur Dasar Pada HTML",
-      link: "/admin/teori-1",
-      progress: "0",
+      link: "/admin/teori-5",
+      progress: progress3,
     },
     {
       nama: "Membuat Tabel Pada HTML",
-      link: "/admin/teori-1",
-      progress: "0",
+      link: "/admin/teori-8",
+      progress: progress4,
     },
     {
       nama: "Formulir pada HTML",
@@ -42,6 +46,10 @@ function HtmlPage() {
       );
       console.log(response);
       setprogress(response.data.data[0].progress1);
+      setprogress2(response.data.data[0].progress2);
+      setprogress3(response.data.data[0].progress3);
+      setprogress4(response.data.data[0].progress4);
+
     } catch (error) {
       console.log(error);
       Messaege("Failed", `${error}`, "error");
@@ -65,12 +73,13 @@ function HtmlPage() {
             </div>
             <div class="border-t-2">
               <Link to={item.link}>
-                <a
+                <button
                   target="_blank"
-                  className="block w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform bg-gray-50 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
+                  className={`block w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform rounded-[14px] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80 ${item.progress == 100 ? "bg-gray-200" : "hover:bg-[#FFC933DD] bg-gray-50" }`}
+                  disabled={item.progress == 100 ? true : false}
                 >
                   Belajar
-                </a>
+                </button>
               </Link>
             </div>
           </div>

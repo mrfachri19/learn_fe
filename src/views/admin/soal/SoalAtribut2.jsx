@@ -1,7 +1,40 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Send20Filled } from "@fluentui/react-icons";
+import { Messaege } from "../../../helper/helper";
+import { updateProgressUser, updateUserPoint } from "../../../api";
 function SoalAtribut2() {
+  const history = useHistory();
+  const jawaban = "meta charset=”UTF-8”";
+  const [text, setText] = useState("");
+  const [sukses, setSukses] = useState();
+
+  const Submit = () => {
+    if (text == jawaban) {
+      Messaege("Succes", "jawaban benar", "success");
+      updateprogressUser();
+      // history.push("/admin/teori");
+    } else {
+      Messaege("Failed", `jawaban salah`, "error");
+    }
+  };
+
+  const updateprogressUser = async () => {
+    try {
+      const response = await updateProgressUser(
+        `/${localStorage.getItem("idUser")}`,
+        {
+          idUser: localStorage.getItem("idUser"),
+          progress3: 40,
+        }
+      );
+      console.log(response);
+      setSukses(response.data.status);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
   return (
     <>
       <h5 className="md:ml-40 text-accentInformation-200">
@@ -19,7 +52,7 @@ function SoalAtribut2() {
 
           <div className="mt-4 mb-6">
             <div className="text-sm text-gray-900 mb-3">
-              Definisikan atribut meta tag Charset UTF-8 
+              Definisikan atribut meta tag Charset UTF-8
             </div>
             <div className="text-sm text-black pt-5 px-20 pb-3 mb-3 ">
               {"<!DOCTYPE html>"}
@@ -31,7 +64,8 @@ function SoalAtribut2() {
                 {"<"}
                 <input
                   type="text"
-                  className="w-28 rounded-lg border-0 border-b border-gray-400 p-2"
+                  className="w-60 rounded-lg border-0 border-b border-gray-400 p-2"
+                  onChange={(e) => setText(e.target.value)}
                 />
                 {" >"}
               </span>
@@ -48,6 +82,7 @@ function SoalAtribut2() {
             <div
               className="rounded-full w-10 h-10 bg-red-700 pt-1 ml-auto"
               style={{ paddingLeft: "14px" }}
+              onClick={Submit}
             >
               <Send20Filled className="w-3 text-white" height="50%" />
             </div>
@@ -55,7 +90,7 @@ function SoalAtribut2() {
         </div>
       </div>
       <div className="flex items-center justify-center mt-5 mb-10">
-        <Link to="/admin/soal-tag3">
+        <Link to="/admin/teori-6">
           <a
             target="_blank"
             className="block w-28 px-4 py-3 text-sm font-medium tracking-wide text-center transition-colors duration-300 transform bg-slate-100 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
@@ -63,14 +98,18 @@ function SoalAtribut2() {
             Sebelumnya
           </a>
         </Link>
-        <Link to="/admin/teori-7">
-          <a
-            target="_blank"
-            className="block w-28 px-4 py-3 text-sm font-medium tracking-wide text-center transition-colors duration-300 transform bg-slate-100 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
-          >
-            Selanjutnya
-          </a>
-        </Link>
+        {sukses == 200 ? (
+          <Link to="/admin/teori-7">
+            <a
+              target="_blank"
+              className="block w-28 px-4 py-3 text-sm font-medium tracking-wide text-center transition-colors duration-300 transform bg-slate-100 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
+            >
+              Selanjutnya
+            </a>
+          </Link>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

@@ -1,6 +1,14 @@
 import React from "react";
-import Laki from "../../assets/images/laki.png";
+import Laki from "../../assets/images/Boy1.png";
+import Laki2 from "../../assets/images/Boy2.png";
+import Laki3 from "../../assets/images/Boy3.png";
+
 import Cewek from "../../assets/images/cewek.png";
+import Cewek2 from "../../assets/images/Girl2.png";
+import Cewek3 from "../../assets/images/Girl3.png";
+import medali1 from "../../assets/images/med1.png";
+import medali2 from "../../assets/images/med2.png";
+
 import { getIdUser } from "../../api";
 import { Tabs } from "antd";
 
@@ -25,19 +33,9 @@ const Tab1 = () => {
             : "perempuan"}
         </div>
         <hr className="mt-3" />
-        <div class="mb-3 text-lg font-bold">Tanggal Bergabung: </div>
+        <div class="mb-3 text-lg font-bold">Email: </div>
         <div class="text-sm text-neutral-600">
-          {localStorage.getItem("tanggaldibuat")}
-        </div>
-        <hr className="mt-3" />
-        <div class="mb-3 text-lg font-bold">Tentang: </div>
-        <div class="text-sm text-neutral-600">
-          {localStorage.getItem("tentang")}
-        </div>
-        <hr className="mt-3" />
-        <div class="mb-3 text-lg font-bold">Alamat: </div>
-        <div class="text-sm text-neutral-600">
-          {localStorage.getItem("alamat")}
+          {localStorage.getItem("email")}
         </div>
         <hr className="mt-3" />
       </div>
@@ -63,6 +61,11 @@ const pencapaian = () => {
         <div class="mb-3 text-lg font-bold">
           Pencapaian {localStorage.getItem("nama")}:{" "}
         </div>
+        <div class="mb-3 flex gap-3">
+          <img src={medali1} alt="" />{" "}
+          <img src={medali2} alt="" />{" "}
+
+        </div>
       </div>
     </>
   );
@@ -73,6 +76,11 @@ const sertifikat = () => {
       <div class="mt-4 mb-6">
         <div class="mb-3 text-lg font-bold">
           Sertifikat {localStorage.getItem("nama")}:{" "}
+        </div>
+        <div class="mb-3 flex gap-3">
+          <img src={medali1} alt="" />{" "}
+          <img src={medali1} alt="" />{" "}
+
         </div>
       </div>
     </>
@@ -101,14 +109,10 @@ function Profile() {
   const items2 = [
     {
       key: "1",
-      label: `Rincian`,
+      label: `Pencapaian`,
       children: pencapaian(),
     },
-    {
-      key: "2",
-      label: `Kemampuan`,
-      children: sertifikat(),
-    },
+
   ];
 
   return (
@@ -121,7 +125,17 @@ function Profile() {
                 <div className="relative">
                   <img
                     src={
-                      localStorage.getItem("gender") == "boy01" ? Laki : Cewek
+                      localStorage.getItem("gender") == "boy01"
+                        ? Laki
+                        : localStorage.getItem("gender") == "boy02"
+                        ? Laki2
+                        : localStorage.getItem("gender") == "boy03"
+                        ? Laki3
+                        : localStorage.getItem("gender") == "girl01"
+                        ? Cewek
+                        : localStorage.getItem("gender") == "girl02"
+                        ? Cewek2
+                        : Cewek3
                     }
                     className="shadow-xl rounded-full h-auto align-middle border-none max-w-150-px"
                     alt=""
@@ -134,7 +148,9 @@ function Profile() {
                 {localStorage.getItem("nama")}
               </h3>
 
-              <div className="mt-2 text-blueGray-600 mb-5">Poin Belajar -</div>
+              <div className="mt-2 text-blueGray-600 mb-5">
+                Poin Belajar 100
+              </div>
             </div>
           </div>
         </div>

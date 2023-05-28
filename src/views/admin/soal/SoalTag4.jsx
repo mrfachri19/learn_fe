@@ -1,7 +1,40 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Send20Filled } from "@fluentui/react-icons";
+import { Messaege } from "../../../helper/helper";
+import { updateProgressUser } from "../../../api";
 function SoalTag4() {
+  const history = useHistory();
+  const jawaban = "width=”300px” height=”250px”";
+  const [text, setText] = useState("");
+  const [sukses, setSukses] = useState();
+
+  const Submit = () => {
+    if (text == jawaban) {
+      Messaege("Succes", "jawaban benar", "success");
+      updateprogressUser();
+      // history.push("/admin/teori");
+    } else {
+      Messaege("Failed", `jawaban salah`, "error");
+    }
+  };
+
+  const updateprogressUser = async () => {
+    try {
+      const response = await updateProgressUser(
+        `/${localStorage.getItem("idUser")}`,
+        {
+          idUser: localStorage.getItem("idUser"),
+          progress2: 80,
+        }
+      );
+      console.log(response);
+      setSukses(response.data.status);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
   return (
     <>
       <h5 className="md:ml-40 text-accentInformation-200">
@@ -24,21 +57,15 @@ function SoalTag4() {
             </div>
             <div className="block">
               <div className="flex items-center align-middle">
-                <input
-                  type="text"
-                  className="w-10 rounded-lg border-0 border-b border-gray-400 p-2"
-                />
                 <div className="text-sm text-gray-900 mb-3 mx-5 mt-6">
                   {'img src="folder-gambar/file-gambar.jpg"'}
                 </div>
                 <input
                   type="text"
-                  className="w-28 rounded-lg border-0 border-b border-gray-400 p-2"
+                  className="w-64 rounded-lg border-0 border-b border-gray-400 p-2"
+                  onChange={(e) => setText(e.target.value)}
                 />
-                <input
-                  type="text"
-                  className="w-28 rounded-lg border-0 border-b border-gray-400 p-2"
-                />
+
                 <div className="text-sm text-gray-900 mb-3 mt-6">{">"}</div>
               </div>
             </div>
@@ -46,6 +73,7 @@ function SoalTag4() {
             <div
               className="rounded-full w-10 h-10 bg-red-700 pt-1 ml-auto"
               style={{ paddingLeft: "14px" }}
+              onClick={Submit}
             >
               <Send20Filled className="w-3 text-white" height="50%" />
             </div>

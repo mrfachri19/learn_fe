@@ -86,7 +86,7 @@ function TeoriPage6() {
         </div>
       </div>
       <div className="flex items-center justify-center mt-5 mb-10">
-        <Link to="/admin/soal-tag5">
+        <Link to="/admin/soal-atribut1">
           <a
             target="_blank"
             className="block w-28 px-4 py-3 text-sm font-medium tracking-wide text-center transition-colors duration-300 transform bg-slate-100 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"

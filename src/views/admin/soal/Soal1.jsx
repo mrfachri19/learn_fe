@@ -7,12 +7,12 @@ function Soal1() {
   const history = useHistory();
   const jawaban = "Hypertext Markup Language";
   const [text, setText] = useState("");
-
+  const [sukses, setSukses] = useState();
   const Submit = () => {
     if (text == jawaban) {
       Messaege("Succes", "jawaban benar", "success");
       updateprogressUser();
-      history.push("/admin/soal-2");
+      // history.push("/admin/soal-2");
     } else {
       Messaege("Failed", `jawaban salah`, "error");
     }
@@ -27,7 +27,8 @@ function Soal1() {
           progress1: 20,
         }
       );
-      console.log(response);
+      console.log(response.data.status);
+      setSukses(response.data.status)
     } catch (error) {
       console.log(error);
       Messaege("Failed", `${error}`, "error");
@@ -79,14 +80,18 @@ function Soal1() {
             Sebelumnya
           </a>
         </Link>
-        {/* <Link to="/admin/soal-2">
-          <a
-            target="_blank"
-            className="block w-28 px-4 py-3 text-sm font-medium tracking-wide text-center transition-colors duration-300 transform bg-slate-100 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
-          >
-            Selanjutnya
-          </a>
-        </Link> */}
+        {sukses == 200 ? (
+          <Link to="/admin/soal-2">
+            <button
+              target="_blank"
+              className="block w-28 px-4 py-3 text-sm font-medium tracking-wide text-center transition-colors duration-300 transform bg-slate-100 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
+            >
+              Selanjutnya
+            </button>
+          </Link>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );
