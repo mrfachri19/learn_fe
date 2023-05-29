@@ -32,7 +32,7 @@ function HtmlPage() {
     },
     {
       nama: "Formulir pada HTML",
-      // link: "/admin/teori-1",
+      link: "/admin/teori-13",
     },
     {
       nama: "HTML Lanjutan",

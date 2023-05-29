@@ -39,6 +39,19 @@ import SoalTabel5 from "../views/admin/soal/SoalTabel5";
 import SoalTabel6 from "../views/admin/soal/SoalTabel6";
 import LeaderBoard from "../views/admin/LeaderBoard";
 import Shop from "../views/admin/Shop";
+import TeoriPage11 from "../views/admin/teori/TeoriPage11";
+import SoalTabel7 from "../views/admin/soal/SoalTabel7";
+import TeoriPage12 from "../views/admin/teori/TeoriPage12";
+import SoalTabel8 from "../views/admin/soal/SoalTabel8";
+import TeoriPage13 from "../views/admin/teori/TeoriPage13";
+import SoalFormulir1 from "../views/admin/soal/SoalFormulir1";
+import SoalFormulir2 from "../views/admin/soal/SoalFormulir2";
+import TeoriPage14 from "../views/admin/teori/TeoriPage14";
+import SoalFormulir3 from "../views/admin/soal/SoalFormulir3";
+import TeoriPage15 from "../views/admin/teori/TeoriPage15";
+import SoalFormulir4 from "../views/admin/soal/SoalFormulir4";
+import SoalFormulir5 from "../views/admin/soal/SoalFormulir5";
+import SoalFormulir6 from "../views/admin/soal/SoalFormulir6";
 
 export default function Admin() {
  
@@ -90,6 +103,19 @@ export default function Admin() {
               <Route path="/admin/teori-10" exact component={TeoriPage10} />
               <Route path="/admin/soal-tabel5" exact component={SoalTabel5} />
               <Route path="/admin/soal-tabel6" exact component={SoalTabel6} />
+              <Route path="/admin/teori-11" exact component={TeoriPage11} />
+              <Route path="/admin/soal-tabel7" exact component={SoalTabel7} />
+              <Route path="/admin/teori-12" exact component={TeoriPage12} />
+              <Route path="/admin/soal-tabel8" exact component={SoalTabel8} />
+              <Route path="/admin/teori-13" exact component={TeoriPage13} />
+              <Route path="/admin/soal-form1" exact component={SoalFormulir1} />
+              <Route path="/admin/soal-form2" exact component={SoalFormulir2} />
+              <Route path="/admin/teori-14" exact component={TeoriPage14} />
+              <Route path="/admin/soal-form3" exact component={SoalFormulir3} />
+              <Route path="/admin/teori-15" exact component={TeoriPage15} />
+              <Route path="/admin/soal-form4" exact component={SoalFormulir4} />
+              <Route path="/admin/soal-form5" exact component={SoalFormulir5} />
+              <Route path="/admin/soal-form6" exact component={SoalFormulir6} />
 
               {/* ----------------------------------------------------------- */}
               <Route path="/admin/css" exact component={CssPage} />
