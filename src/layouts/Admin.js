@@ -58,8 +58,7 @@ export default function Admin() {
               <Route path="/admin/leaderboard" exact component={LeaderBoard} />
               <Route path="/admin/pilihan-belajar" exact component={PilihanBelajar} />
               <Route path="/admin/shop" exact component={Shop} />
-
-{/* ================== */}
+{/* =============================================================================== */}
               <Route path="/admin/html" exact component={HtmlPage} />
               <Route path="/admin/teori-1" exact component={TeoriPage1} />
               <Route path="/admin/soal-1" exact component={Soal1} />
