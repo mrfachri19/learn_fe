@@ -9,6 +9,7 @@ function HtmlPage() {
   const [progress3, setprogress3] = useState();
   const [progress4, setprogress4] = useState();
   const [progress5, setprogress5] = useState();
+  const [progress6, setprogress6] = useState();
 
   const data = [
     {
@@ -39,7 +40,9 @@ function HtmlPage() {
     },
     {
       nama: "HTML Lanjutan",
-      // link: "/admin/teori-1",
+      link: "/admin/teori-17",
+      progress: progress6,
+
     },
   ];
   const getIdprogress = async () => {
@@ -53,6 +56,7 @@ function HtmlPage() {
       setprogress3(response.data.data[0].progress3);
       setprogress4(response.data.data[0].progress4);
       setprogress5(response.data.data[0].progress5);
+      setprogress6(response.data.data[0].progress6);
 
     } catch (error) {
       console.log(error);

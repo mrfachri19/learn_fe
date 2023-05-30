@@ -44,7 +44,7 @@ function SoalTag5() {
       const response = await updateUserPoint(
         `/${localStorage.getItem("idUser")}`,
         {
-          point: 100 * 2,
+          point: 1000 * 2,
         }
       );
       console.log(response);

@@ -20,6 +20,8 @@ export const LoginPage = () => {
       localStorage.setItem("namalengkap", response.data.data.namaPengguna);
       localStorage.setItem("email", response.data.data.email);
       localStorage.setItem("gender", response.data.data.char);
+      localStorage.setItem("point", response.data.data.point);
+
       Messaege("Succes", "Success Login", "success");
       setTimeout(() => {
         history.push("/admin");

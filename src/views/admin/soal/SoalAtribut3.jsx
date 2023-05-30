@@ -37,7 +37,7 @@ function SoalAtribut3() {
       const response = await updateUserPoint(
         `/${localStorage.getItem("idUser")}`,
         {
-          point: 100 * 3,
+          point: 1000 * 3,
         }
       );
       console.log(response);

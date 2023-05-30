@@ -42,7 +42,7 @@ function Soal5() {
       const response = await updateUserPoint(
         `/${localStorage.getItem("idUser")}`,
         {
-          point: 100,
+          point: 1000,
         }
       );
       console.log(response);

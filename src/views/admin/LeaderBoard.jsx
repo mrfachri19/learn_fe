@@ -8,6 +8,7 @@ function LeaderBoard() {
   const [user, setUser] = useState([]);
   const [user1, setUser1] = useState([]);
   const [gambar, setGambar] = useState("");
+  const [point, setpoint] = useState("");
 
   const getAllUserLeaderboard = async () => {
     try {
@@ -39,7 +40,7 @@ function LeaderBoard() {
   };
 
   useEffect(() => {
-    leaderboead()
+    leaderboead();
     getAllUserLeaderboard();
   }, []);
 
@@ -47,6 +48,7 @@ function LeaderBoard() {
     try {
       const response = await getIdUser(`/${localStorage.getItem("idUser")}`);
       setGambar(response.data.data[0].karakter);
+      setpoint(response.data.data[0].point);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -67,24 +69,43 @@ function LeaderBoard() {
               alt=""
               className="ml-auto"
             />
-                {gambar == "boy01" ? (
-                <img src={'https://i.postimg.cc/rm7zTfjF/laki.png'} className="w-28 mx-auto rounded-full border-8 border-white" alt="" />
-              ) : "girl01" ? (
-                <img src={'https://i.postimg.cc/T2m3mqQg/cewek.png'} className="w-28 mx-auto rounded-full border-8 border-white" alt="" />
-              ) : (
-                ""
-              )}
+            {gambar == "boy01" ? (
+              <img
+                src={"https://i.postimg.cc/rm7zTfjF/laki.png"}
+                className="w-28 mx-auto rounded-full border-8 border-white"
+                alt=""
+              />
+            ) : "girl01" ? (
+              <img
+                src={"https://i.postimg.cc/T2m3mqQg/cewek.png"}
+                className="w-28 mx-auto rounded-full border-8 border-white"
+                alt=""
+              />
+            ) : (
+              ""
+            )}
             <div class="text-center mt-2 text-base font-medium">
               {item.namaDepan + " " + item.namaBelakang}
             </div>
             <div class="text-center mt-2 font-light text-sm">
               {item.namaDepan}
             </div>
-            <div class="text-center font-normal text-sm">{localStorage.getItem('email')}</div>
+            <div class="text-center font-normal text-sm">
+              {localStorage.getItem("email")}
+            </div>
             <hr class="mt-3" />
             <div class="flex p-4">
               <div class="w-1/2 text-center text-sm ">
-                <span class="font-bold block">0 %</span> Progress
+                <span class="font-bold block">
+                  {item.point >= 9000
+                    ? "100%"
+                    : item.point < 9000 && item.point > 4500
+                    ? "50%"
+                    : item.point == 0
+                    ? "0%"
+                    : "10%"}
+                </span>{" "}
+                Progress
               </div>
               <div class="w-0 border border-gray-300 "></div>
               <div class="w-1/2 text-center text-sm  ">
@@ -106,17 +127,27 @@ function LeaderBoard() {
                 ></img>{" "}
               </td>
               <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-              {item.namaDepan + " " + item.namaBelakang}
+                {item.namaDepan + " " + item.namaBelakang}
               </td>
               <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                 email{" "}
               </td>
               <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-              {item.point} Point
+                {item.point} Point
               </td>
               <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                 <div className="flex items-center">
-                  <span className="mr-2">Progress</span>
+                  <span className="mr-2">
+                    {item.point >= 8000
+                      ? "100%"
+                      : point === 6000
+                      ? "50%"
+                      : point < 3000
+                      ? "30%"
+                      : point == 0
+                      ? "0%"
+                      : "0%"}
+                  </span>
                 </div>
               </td>
               <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">

@@ -3,7 +3,7 @@ import { Radio, Space } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import { Send20Filled } from "@fluentui/react-icons";
 import { Messaege } from "../../../helper/helper";
-import { updateProgressUser } from "../../../api";
+import { updateProgressUser, updateUserPoint } from "../../../api";
 function SoalTabel8() {
   const [value, setValue] = useState(1);
   const [sukses, setSukses] = useState();
@@ -17,6 +17,7 @@ function SoalTabel8() {
     if (value == 1) {
       Messaege("Succes", "jawaban benar", "success");
       updateprogressUser();
+      updateUser()
     } else {
       Messaege("Failed", `jawaban salah`, "error");
     }
@@ -33,6 +34,21 @@ function SoalTabel8() {
       );
       console.log(response);
       setSukses(response.data.status);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
+
+  const updateUser = async () => {
+    try {
+      const response = await updateUserPoint(
+        `/${localStorage.getItem("idUser")}`,
+        {
+          point: 1000 * 4,
+        }
+      );
+      console.log(response);
     } catch (error) {
       console.log(error);
       Messaege("Failed", `${error}`, "error");

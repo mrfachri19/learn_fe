@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Send20Filled } from "@fluentui/react-icons";
 import { Messaege } from "../../../helper/helper";
-import { updateProgressUser } from "../../../api";
+import { updateProgressUser, updateUserPoint } from "../../../api";
 function SoalFormulir7() {
   const history = useHistory();
   const jawaban = "multipart/form-data";
@@ -13,12 +13,26 @@ function SoalFormulir7() {
     if (text == jawaban) {
       Messaege("Succes", "jawaban benar", "success");
       updateprogressUser();
+      updateUser()
       // history.push("/admin/teori");
     } else {
       Messaege("Failed", `jawaban salah`, "error");
     }
   };
-
+  const updateUser = async () => {
+    try {
+      const response = await updateUserPoint(
+        `/${localStorage.getItem("idUser")}`,
+        {
+          point: 1000 * 5,
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
   const updateprogressUser = async () => {
     try {
       const response = await updateProgressUser(
@@ -35,6 +49,7 @@ function SoalFormulir7() {
       Messaege("Failed", `${error}`, "error");
     }
   };
+  
   return (
     <>
       <h5 className="md:ml-40 text-accentInformation-200">
