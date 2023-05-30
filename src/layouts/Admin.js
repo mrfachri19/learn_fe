@@ -52,6 +52,12 @@ import TeoriPage15 from "../views/admin/teori/TeoriPage15";
 import SoalFormulir4 from "../views/admin/soal/SoalFormulir4";
 import SoalFormulir5 from "../views/admin/soal/SoalFormulir5";
 import SoalFormulir6 from "../views/admin/soal/SoalFormulir6";
+import TeoriPage16 from "../views/admin/teori/TeoriPage16";
+import SoalFormulir7 from "../views/admin/soal/SoalFormulir7";
+import TeoriPage17 from "../views/admin/teori/TeoriPage17";
+import SoalHtml1 from "../views/admin/soal/SoalHtml1";
+import SoalHtml2 from "../views/admin/soal/SoalHtml2";
+import SoalHtml3 from "../views/admin/soal/SoalHtml3";
 
 export default function Admin() {
  
@@ -116,6 +122,12 @@ export default function Admin() {
               <Route path="/admin/soal-form4" exact component={SoalFormulir4} />
               <Route path="/admin/soal-form5" exact component={SoalFormulir5} />
               <Route path="/admin/soal-form6" exact component={SoalFormulir6} />
+              <Route path="/admin/teori-16" exact component={TeoriPage16} />
+              <Route path="/admin/soal-form7" exact component={SoalFormulir7} />
+              <Route path="/admin/teori-17" exact component={TeoriPage17} />
+              <Route path="/admin/soal-html1" exact component={SoalHtml1} />
+              <Route path="/admin/soal-html2" exact component={SoalHtml2} />
+              <Route path="/admin/soal-html3" exact component={SoalHtml3} />
 
               {/* ----------------------------------------------------------- */}
               <Route path="/admin/css" exact component={CssPage} />

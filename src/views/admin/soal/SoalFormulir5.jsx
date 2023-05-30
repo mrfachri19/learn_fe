@@ -72,8 +72,7 @@ function SoalFormulir5() {
                   </Radio>
                   <Radio value={3}>
                     c.{" "}
-                    {`<. Atribut “span” 
-`}{" "}
+                    {`Atribut “span”`}
                   </Radio>
               
                 </Space>

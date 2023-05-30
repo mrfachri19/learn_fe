@@ -72,7 +72,7 @@ function SoalFormulir4() {
                   </Radio>
                   <Radio value={3}>
                     c.{" "}
-                    {`<. Atribut “rows” 
+                    {`Atribut “rows” 
 `}{" "}
                   </Radio>
               

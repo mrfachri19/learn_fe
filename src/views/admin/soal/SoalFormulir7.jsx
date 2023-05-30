@@ -3,9 +3,9 @@ import { Link, useHistory } from "react-router-dom";
 import { Send20Filled } from "@fluentui/react-icons";
 import { Messaege } from "../../../helper/helper";
 import { updateProgressUser } from "../../../api";
-function SoalFormulir6() {
+function SoalFormulir7() {
   const history = useHistory();
-  const jawaban = "month";
+  const jawaban = "multipart/form-data";
   const [text, setText] = useState("");
   const [sukses, setSukses] = useState();
 
@@ -25,7 +25,7 @@ function SoalFormulir6() {
         `/${localStorage.getItem("idUser")}`,
         {
           idUser: localStorage.getItem("idUser"),
-          progress5: 95,
+          progress5: 100,
         }
       );
       console.log(response);
@@ -46,20 +46,20 @@ function SoalFormulir6() {
         <div className="rounded-xl border p-5 shadow-md w-1/2 bg-white">
           <div className="flex w-full items-center justify-between border-b pb-3">
             <div className="flex items-center">
-              <div className="text-xl text-black font-bold">Soal 6</div>
+              <div className="text-xl text-black font-bold">Soal 7</div>
             </div>
           </div>
 
           <div className="mt-4 mb-6">
             <div className="text-sm text-gray-900 mb-3">
               {
-                "Isi atribut type pada tag <input> yang berguna untuk memasukkan bulan? "
+                "Atribut dan isinya (pada tag form) yang harus kalian cantumkan jika ingin menggunakan input type file adalah?"
               }{" "}
             </div>
            
             <input
                   type="text"
-                  className="w-28 rounded-lg border-0 border-b border-gray-400 p-2"
+                  className="w-48 rounded-lg border-0 border-b border-gray-400 p-2"
                   onChange={(e) => setText(e.target.value)}
                 />
             <div
@@ -82,7 +82,7 @@ function SoalFormulir6() {
           </a>
         </Link>
         {sukses == 200 ? (
-          <Link to="/admin/teori-16">
+          <Link to="/admin/teori-17">
             <a
               target="_blank"
               className="block w-28 px-4 py-3 text-sm font-medium tracking-wide text-center transition-colors duration-300 transform bg-slate-100 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
@@ -98,4 +98,4 @@ function SoalFormulir6() {
   );
 }
 
-export default SoalFormulir6;
+export default SoalFormulir7;

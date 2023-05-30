@@ -8,6 +8,7 @@ function HtmlPage() {
   const [progress2, setprogress2] = useState();
   const [progress3, setprogress3] = useState();
   const [progress4, setprogress4] = useState();
+  const [progress5, setprogress5] = useState();
 
   const data = [
     {
@@ -33,6 +34,8 @@ function HtmlPage() {
     {
       nama: "Formulir pada HTML",
       link: "/admin/teori-13",
+      progress: progress5,
+
     },
     {
       nama: "HTML Lanjutan",
@@ -49,6 +52,7 @@ function HtmlPage() {
       setprogress2(response.data.data[0].progress2);
       setprogress3(response.data.data[0].progress3);
       setprogress4(response.data.data[0].progress4);
+      setprogress5(response.data.data[0].progress5);
 
     } catch (error) {
       console.log(error);
