@@ -54,6 +54,10 @@ function SoalTabel8() {
       Messaege("Failed", `${error}`, "error");
     }
   };
+
+  const suksesModul = () =>  {
+    Messaege("Succes", "Selamat anda telah menyelesaikan modul", "success");
+  }
   return (
     <>
       <h5 className="md:ml-40 text-accentInformation-200">
@@ -109,6 +113,7 @@ function SoalTabel8() {
             <a
               target="_blank"
               className="block w-28 px-4 py-3 text-sm font-medium tracking-wide text-center transition-colors duration-300 transform bg-slate-100 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
+              onClick={suksesModul}
             >
               Selanjutnya
             </a>

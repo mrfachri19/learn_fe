@@ -58,7 +58,7 @@ function LeaderBoard() {
   useEffect(() => {
     getId();
   }, []);
-
+  const [show, setShow] = useState(true);
   return (
     <div className="mx-32">
       <div className="grid grid-cols-3 my-20">
@@ -120,11 +120,21 @@ function LeaderBoard() {
           {user1.map((item, index) => (
             <tr>
               <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                <img
-                  src="https://avatars.githubusercontent.com/u/67946056?v=4"
-                  className="h-12 w-12 bg-white rounded-full border"
-                  alt="..."
-                ></img>{" "}
+                {gambar == "boy01" ? (
+                  <img
+                    src={"https://i.postimg.cc/rm7zTfjF/laki.png"}
+                    className="w-28 mx-auto rounded-full border-8 border-white"
+                    alt=""
+                  />
+                ) : "girl01" ? (
+                  <img
+                    src={"https://i.postimg.cc/T2m3mqQg/cewek.png"}
+                    className="w-28 mx-auto rounded-full border-8 border-white"
+                    alt=""
+                  />
+                ) : (
+                  ""
+                )}
               </td>
               <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                 {item.namaDepan + " " + item.namaBelakang}
@@ -151,12 +161,23 @@ function LeaderBoard() {
                 </div>
               </td>
               <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                <a
-                  target="_blank"
-                  className="block align-middle items-center w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform bg-[#FFC933] rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80 cursor-pointer"
-                >
-                  Tambah Teman
-                </a>
+                {show == true ? (
+                  <a
+                    target="_blank"
+                    className="block align-middle items-center w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform bg-[#FFC933] rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80 cursor-pointer"
+                    onClick={() => setShow(false)}
+                  >
+                    add friend{" "}
+                  </a>
+                ) : (
+                  <a
+                    target="_blank"
+                    className="block align-middle items-center w-full text-white px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform bg-teal-900 rounded-[14px] hover:bg-teal-900 focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80 cursor-pointer"
+                    // onClick={() => setShow(true)}
+                  >
+                    added friend
+                  </a>
+                )}
               </td>
             </tr>
           ))}

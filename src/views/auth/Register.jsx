@@ -23,7 +23,6 @@ export const RegisterPage = () => {
   const RegisterUser = async (e) => {
     if (password == konfirmasiPassword) {
       try {
-        e.preventDefault();
         const response = await register({
           namaDepan: namaDepan,
           namaBelakang: namaBelakang,
@@ -122,8 +121,8 @@ export const RegisterPage = () => {
               kami
             </p>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
-            <input type="hidden" name="remember" value="true" />
+          <form className="mt-8 space-y-6">
+            {/* <input type="hidden" name="remember" value="true" /> */}
             <div className="relative">
               <input
                 className=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
@@ -165,7 +164,9 @@ export const RegisterPage = () => {
                 onChange={(e) => setKonfirmPassword(e.target.value)}
               />
             </div>
-            <div className="flex items-center justify-between">
+      
+          </form>
+          <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
                   id="remember_me"
@@ -175,13 +176,13 @@ export const RegisterPage = () => {
                 />
                 <label
                   for="remember_me"
-                  className="ml-2 block text-sm text-gray-900"
+                  className="ml-2 my-3 block text-sm text-gray-900"
                 >
                   Remember me
                 </label>
               </div>
             </div>
-            <div>
+            <div className="my-5">
               <button
                 type="submit"
                 className="w-full flex justify-center bg-gradient-to-r from-indigo-600 to-accentInformation-200  hover:bg-gradient-to-l hover:from-blue-500 hover:to-indigo-600 text-gray-100 p-4  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500"
@@ -190,7 +191,7 @@ export const RegisterPage = () => {
                 Sign up
               </button>
             </div>
-            <p className="flex flex-col items-center justify-center mt-10 text-center text-md text-gray-500">
+            <p className="flex flex-col items-center justify-center mt-5 text-center text-md text-gray-500">
               <span>Have an account?</span>
               <a
                 href="/auth/login"
@@ -199,7 +200,6 @@ export const RegisterPage = () => {
                 Sign in
               </a>
             </p>
-          </form>
         </div>
       </div>
       <Modal

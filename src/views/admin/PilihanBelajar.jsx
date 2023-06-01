@@ -5,8 +5,6 @@ import html from "../../assets/images/html.png.png";
 import css from "../../assets/images/css.png.png";
 import { Link } from "react-router-dom";
 import { Modal } from "antd";
-import Laki from "../../assets/images/laki.png";
-import Cewek from "../../assets/images/cewek.png";
 import { getIdUser } from "../../api";
 import bgimage from "../../assets/images/Frame 4 (2).png";
 
@@ -117,10 +115,21 @@ function PilihanBelajar() {
           <img className="absolute h-96 z-0 " src={bgimage} alt="" />
           <div className="mx-5">
             <div className="">
+              {gambar == "girl01" ? (
+                <img
+                  src={"https://i.postimg.cc/T2m3mqQg/cewek.png"}
+                  className="md:absolute"
+                  alt=""
+                />
+              ) : (
+                ""
+              )}
               {gambar == "boy01" ? (
-                <img src={'https://i.postimg.cc/rm7zTfjF/laki.png'} className="md:absolute" alt="" />
-              ) : "girl01" ? (
-                <img src={'https://i.postimg.cc/T2m3mqQg/cewek.png'} className="md:absolute" alt="" />
+                <img
+                  src={"https://i.postimg.cc/rm7zTfjF/laki.png"}
+                  className="md:absolute"
+                  alt=""
+                />
               ) : (
                 ""
               )}

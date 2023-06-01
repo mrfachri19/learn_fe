@@ -35,8 +35,8 @@ function HomePage() {
                 Belajar Sekarang
               </div>
             </div>
-            <div className="md:mt-5 mt-16 -mb-12">
-              <img src={bgHead} alt="" />
+            <div className="md:mt-6 mt-17 -mb-12">
+              <img src={bgHead} alt="" className="-mb-2"/>
             </div>
           </div>
         </div>
@@ -48,31 +48,31 @@ function HomePage() {
         </h5>
         <div className="md:mx-40 mx-5 mt-10 pb-12">
           <div className="grid md:grid-cols-4 grid-cols-4">
-            <div className="py-4 md:px-20 px-5 rounded-lg border-accentInformation-200 border bg-white w-fit">
-              level 1
+            <div className="py-4 px-5 rounded-lg border-accentInformation-200 border bg-white w-fit">
+              Perkenalan HTML
             </div>
-            <div className="py-4 md:px-20 px-5   rounded-lg border-accentInformation-200 border bg-white w-fit">
-              level 2
+            <div className="py-4  px-10 rounded-lg border-accentInformation-200 border bg-white w-fit">
+              Struktur Dasar HTML{" "}
             </div>
-            <div className="py-4 md:px-20 px-5   rounded-lg border-accentInformation-200 border bg-white w-fit">
-              level 3
+            <div className="py-4  px-7  rounded-lg border-accentInformation-200 border bg-white w-fit">
+              Tabel pada HTML{" "}
             </div>
-            <div className="py-4 md:px-20 px-5  rounded-lg border-accentInformation-200 border bg-white w-fit">
-              level 4
+            <div className="py-4 px-9  rounded-lg border-accentInformation-200 border bg-white w-fit">
+              Formulir pada HTML{" "}
             </div>
           </div>
           <div className="grid grid-cols-4 mt-10">
-            <div className="py-4 md:px-20 px-5 rounded-lg border-accentInformation-200 border bg-white w-fit">
-              level 5
+            <div className="py-4 px-7 rounded-lg border-accentInformation-200 border bg-white w-fit">
+              Perkenalan CSS{" "}
             </div>
-            <div className="py-4 md:px-20 px-5  rounded-lg border-accentInformation-200 border bg-white w-fit">
-              level 6
+            <div className="py-4  px-6 rounded-lg border-accentInformation-200 border bg-white w-fit">
+              Gabungan CSS dan HTML{" "}
             </div>
-            <div className="py-4 md:px-20 px-5  rounded-lg border-accentInformation-200 border bg-white w-fit">
-              level 7
+            <div className="py-4 px-8 rounded-lg border-accentInformation-200 border bg-white w-fit">
+              Text dengan CSS{" "}
             </div>
-            <div className="py-4 md:px-20 px-5  rounded-lg border-accentInformation-200 border bg-white w-fit">
-              level 8
+            <div className="py-4 px-8  rounded-lg border-accentInformation-200 border bg-white w-fit">
+              Property pada CSS, dll{" "}
             </div>
           </div>
         </div>

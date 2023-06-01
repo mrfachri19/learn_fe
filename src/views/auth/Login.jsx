@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../assets/images/logolearn.svg";
-import { login } from "../../api/index";
+import { getIdUser, login, updateUserPoint } from "../../api/index";
 import { useHistory } from "react-router-dom";
 import { Messaege } from "../../helper/helper";
 export const LoginPage = () => {
@@ -21,12 +21,27 @@ export const LoginPage = () => {
       localStorage.setItem("email", response.data.data.email);
       localStorage.setItem("gender", response.data.data.char);
       localStorage.setItem("point", response.data.data.point);
-
-      Messaege("Succes", "Success Login", "success");
+      updateUser(response.data.data.id, response.data.data.point)
+      Messaege("Succes", "Success Login, you get new point", "success");
       setTimeout(() => {
         history.push("/admin");
       }, 2000);
       console.log(response);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
+  const updateUser = async (id, point) => {
+    try {
+      const response = await updateUserPoint(
+        `/${id}`,
+        {
+          point: point + 50,
+        }
+      );
+      console.log(response);
+      
     } catch (error) {
       console.log(error);
       Messaege("Failed", `${error}`, "error");

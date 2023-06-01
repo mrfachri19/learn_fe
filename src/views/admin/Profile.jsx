@@ -156,7 +156,21 @@ function Profile() {
       children: pencapaian(),
     },
   ];
+  const [gambar, setgambar] = useState("");
+  const getId = async () => {
+    try {
+      const response = await getIdUser(`/${localStorage.getItem("idUser")}`);
+      setgambar(response.data.data[0].karakter);
 
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getId();
+  }, []);
   return (
     <div className="flex mx-28 gap-5 mt-14">
       <div className="w-1/13 px-4">
@@ -167,15 +181,15 @@ function Profile() {
                 <div className="relative">
                   <img
                     src={
-                      localStorage.getItem("gender") == "boy01"
+                      gambar == "boy01"
                         ? Laki
-                        : localStorage.getItem("gender") == "boy02"
+                        : gambar == "boy02"
                         ? Laki2
-                        : localStorage.getItem("gender") == "boy03"
+                        : gambar == "boy03"
                         ? Laki3
-                        : localStorage.getItem("gender") == "girl01"
+                        : gambar == "girl01"
                         ? Cewek
-                        : localStorage.getItem("gender") == "girl02"
+                        : gambar == "girl02"
                         ? Cewek2
                         : Cewek3
                     }

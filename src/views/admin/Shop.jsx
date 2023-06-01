@@ -5,7 +5,13 @@ import boy3 from "../../assets/images/Boy3.png";
 import girl1 from "../../assets/images/Girl1.png";
 import girl2 from "../../assets/images/Girl2.png";
 import girl3 from "../../assets/images/Girl3.png";
-import { getidShop, postShopuser, updateShopuser } from "../../api";
+import {
+  getidShop,
+  getIdUser,
+  updateKarakter,
+  updateShopuserKarakter,
+  updateUserPoint,
+} from "../../api";
 import { Messaege } from "../../helper/helper";
 
 function Shop() {
@@ -16,15 +22,16 @@ function Shop() {
   const [buy4, setBuy4] = useState("");
   const [buy5, setBuy5] = useState("");
   const [buy6, setBuy6] = useState("");
-
+  const [selected, setSelected] = useState("");
   const ListShop = [
     {
       id: 1,
       photo: boy1,
       nama: "HighShooler",
       variant: "variant - Boy",
-
       value: buy1,
+      select: "boy01",
+      price: 0,
     },
     {
       id: 2,
@@ -32,6 +39,8 @@ function Shop() {
       nama: "Extra Stylish",
       variant: "variant - Boy",
       value: buy2,
+      select: "boy02",
+      price: 4000,
     },
     {
       id: 3,
@@ -40,6 +49,8 @@ function Shop() {
       variant: "variant - Boy",
       value: user?.boy03,
       value: buy3,
+      select: "boy03",
+      price: 2000,
     },
     {
       id: 4,
@@ -47,6 +58,8 @@ function Shop() {
       nama: "HighShooler",
       variant: "variant - Girl",
       value: buy4,
+      select: "girl01",
+      price: 0,
     },
     {
       id: 5,
@@ -54,6 +67,8 @@ function Shop() {
       nama: "HighShooler",
       variant: "variant - Girl",
       value: buy5,
+      select: "girl02",
+      price: 4000,
     },
     {
       id: 6,
@@ -61,6 +76,8 @@ function Shop() {
       nama: "HighShooler",
       variant: "variant - Girl",
       value: buy6,
+      select: "girl03",
+      price: 2000,
     },
   ];
   const getidUserShop = async () => {
@@ -80,10 +97,90 @@ function Shop() {
       console.log(error);
     }
   };
+  const [userpoint, setUserpoint] = useState();
+  const [buyKar, setbuyKar] = useState("");
+  const getIuserPoint = async () => {
+    try {
+      const response = await getIdUser(`/${localStorage.getItem("idUser")}`);
+      var temp = [];
+      temp = response?.data?.data[0].point;
+      console.log(temp);
+      setUserpoint(temp);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const pilih = (gambar) => {
+    setSelected(gambar);
+    updateGambar(gambar);
+  };
 
   useEffect(() => {
     getidUserShop();
+    getIuserPoint();
   }, []);
+  const updateGambar = async (gambar) => {
+    try {
+      const response = await updateKarakter(
+        `/${localStorage.getItem("idUser")}`,
+        {
+          karakter: gambar,
+        }
+      );
+      alert("berhasil ganti gambar");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const selectedKar = (char) => {
+    setbuyKar(char);
+    alert("item dipilih")
+  };
+
+  const BuyKarakter = (price, char) => {
+    if (userpoint < price) {
+      alert("point tidak cukup");
+    } else {
+      postShopUser();
+      updateUser(price);
+      getidUserShop();
+      alert("sukses beli");
+    }
+  };
+
+  const postShopUser = async () => {
+    try {
+      const response = await updateShopuserKarakter(
+        `/${localStorage.getItem("idUser")}`,
+        {
+          boy02: buyKar == "boy02" ? "ada" : "tidak",
+          boy03: buyKar == "boy03" ? "ada" : "tidak",
+          girl02: buyKar == "girl02" ? "ada" : "tidak",
+          girl03: buyKar == "girl03" ? "ada" : "tidak",
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateUser = async (price) => {
+    try {
+      const response = await updateUserPoint(
+        `/${localStorage.getItem("idUser")}`,
+        {
+          point: userpoint - price,
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
 
   return (
     <div className="grid grid-cols-3 mx-20 gap-5">
@@ -92,24 +189,39 @@ function Shop() {
           <a href="#">
             <img className="rounded-t-lg mx-16" src={item.photo} alt="" />
           </a>
-          <div className="p-5">
+          <div className="p-5 text-center">
             <h5 className="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">
               {item.nama}
             </h5>
             <h5 className="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">
               {item.variant}
             </h5>
+            <h5 className="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">
+              {item.price} point
+            </h5>
             {item.value == "ada" ? (
-              <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg ml-3 text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              <button
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg ml-3 text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                onClick={() => pilih(item.select)}
+              >
                 Equip
               </button>
             ) : (
               <>
-                <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg mr-3 text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                {/* <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg mr-3 text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                   pilih
-                </button>
-                <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                </button> */}
+                <button
+                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  onClick={() => BuyKarakter(item.price)}
+                >
                   Buy
+                </button>
+                <button
+                  className="text-white ml-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  onClick={() => selectedKar( item.select)}
+                >
+                  Pilih
                 </button>
               </>
             )}

@@ -74,6 +74,7 @@ export const login = post("auth/login");
 export const getIdUser = get("auth");
 export const getAlluser = get("auth");
 export const updateUserPoint = patch("auth");
+export const updateKarakter = patch("auth/gambar");
 
 // ===============
 export const getIdUserProgress = get("progress-html");
@@ -84,6 +85,8 @@ export const updateProgressUser = patch("progress-html");
 export const getidShop = get("shop");
 export const postShopuser = post("shop");
 export const updateShopuser = patch("shop");
+export const updateShopuserKarakter = patch("shop");
+
 const API = {
   login,
   register,
@@ -94,7 +97,9 @@ const API = {
   postShopuser,
   getidShop,
   updateShopuser,
-  updateUserPoint
+  updateUserPoint,
+  updateKarakter,
+  updateShopuserKarakter
 };
 
 export default API;

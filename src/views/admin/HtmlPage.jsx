@@ -84,7 +84,7 @@ function HtmlPage() {
                 <button
                   target="_blank"
                   className={`block w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform rounded-[14px] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80 ${item.progress == 100 ? "bg-gray-200" : "hover:bg-[#FFC933DD] bg-gray-50" }`}
-                  disabled={item.progress == 100 ? true : false}
+                  // disabled={item.progress < 100 ? true : false}
                 >
                   Belajar
                 </button>
