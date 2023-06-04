@@ -2,14 +2,21 @@ import React, { useEffect, useState } from "react";
 import Laki from "../../assets/images/Boy1.png";
 import Laki2 from "../../assets/images/Boy2.png";
 import Laki3 from "../../assets/images/Boy3.png";
-
 import Cewek from "../../assets/images/cewek.png";
 import Cewek2 from "../../assets/images/Girl2.png";
 import Cewek3 from "../../assets/images/Girl3.png";
-import medali1 from "../../assets/images/med1.png";
-import medali2 from "../../assets/images/med2.png";
+import medali1 from "../../assets/images/badgeLearn-Perkenalan.png";
+import medali2 from "../../assets/images/badgeLearn-TagAtributElemen.png";
+import medali3 from "../../assets/images/badgeLearn-StrukturDasar.png";
+import medali4 from "../../assets/images/badgeLearn-Tabel.png";
+import medali5 from "../../assets/images/badgeLearn-FormulirHTML.png";
+import medali6 from "../../assets/images/badgeLearn-HTMLLanjutan.png";
 
-import { getIdUser, getIdUserProgress } from "../../api";
+import medali7 from "../../assets/images/badgeLearn-Perkenalan (1).png"
+import medali8 from "../../assets/images/badgeLearn-IntegrasiCSSHTML.png"
+import medali9 from "../../assets/images/badgeLearn-FormulirHTML (1).png"
+
+import { getIdUser, getIdUserProgress, getIdUserProgresscss } from "../../api";
 import { Tabs } from "antd";
 import { Messaege } from "../../helper/helper";
 
@@ -101,7 +108,56 @@ const Tab2 = () => {
   );
 };
 
-const pencapaian = () => {
+const Pencapaian = () => {
+  const [progress, setprogress] = useState();
+  const [progress2, setprogress2] = useState();
+  const [progress3, setprogress3] = useState();
+  const [progress4, setprogress4] = useState();
+  const [progress5, setprogress5] = useState();
+  const [progress6, setprogress6] = useState();
+
+  const [progress11, setprogress11] = useState();
+  const [progress22, setprogress22] = useState();
+  const [progress33, setprogress33] = useState();
+  const getIdprogress = async () => {
+    try {
+      const response = await getIdUserProgress(
+        `/${localStorage.getItem("idUser")}`
+      );
+      console.log(response);
+      setprogress(response.data.data[0].progress1);
+      setprogress2(response.data.data[0].progress2);
+      setprogress3(response.data.data[0].progress3);
+      setprogress4(response.data.data[0].progress4);
+      setprogress5(response.data.data[0].progress5);
+      setprogress6(response.data.data[0].progress6);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
+  useEffect(() => {
+    getIdprogress();
+  }, []);
+
+  const getIdprogresscss = async () => {
+    try {
+      const response = await getIdUserProgresscss(
+        `/${localStorage.getItem("idUser")}`
+      );
+      console.log(response);
+      setprogress11(response.data.data[0].progress1);
+      setprogress22(response.data.data[0].progress2);
+      setprogress33(response.data.data[0].progress3);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
+  useEffect(() => {
+    getIdprogresscss();
+  }, []);
+
   return (
     <>
       <div class="mt-4 mb-6">
@@ -109,21 +165,16 @@ const pencapaian = () => {
           Pencapaian {localStorage.getItem("nama")}:{" "}
         </div>
         <div class="mb-3 flex gap-3">
-          <img src={medali1} alt="" /> <img src={medali2} alt="" />{" "}
-        </div>
-      </div>
-    </>
-  );
-};
-const sertifikat = () => {
-  return (
-    <>
-      <div class="mt-4 mb-6">
-        <div class="mb-3 text-lg font-bold">
-          Sertifikat {localStorage.getItem("nama")}:{" "}
-        </div>
-        <div class="mb-3 flex gap-3">
-          <img src={medali1} alt="" /> <img src={medali1} alt="" />{" "}
+          {progress ? ( <img src={medali1} alt="" className="w-28 h-28" /> ) : (<></>)}
+          {progress2 ? ( <img src={medali2} alt="" className="w-28 h-28" /> ) : (<></>)}
+          {progress3 ? ( <img src={medali3} alt="" className="w-28 h-28" /> ) : (<></>)}
+          {progress4 ? ( <img src={medali4} alt="" className="w-28 h-28" /> ) : (<></>)}
+          {progress5 ? ( <img src={medali5} alt="" className="w-28 h-28" /> ) : (<></>)}
+          {progress6 ? ( <img src={medali6} alt="" className="w-28 h-28" /> ) : (<></>)}
+          {progress11 ? ( <img src={medali7} alt="" className="w-28 h-28" /> ) : (<></>)}
+          {progress22 ? ( <img src={medali8} alt="" className="w-28 h-28" /> ) : (<></>)}
+          {progress33 ? ( <img src={medali9} alt="" className="w-28 h-28" /> ) : (<></>)}
+
         </div>
       </div>
     </>
@@ -153,14 +204,17 @@ function Profile() {
     {
       key: "1",
       label: `Pencapaian`,
-      children: pencapaian(),
+      children: Pencapaian(),
     },
   ];
   const [gambar, setgambar] = useState("");
+  const [point, setpoint] = useState("");
+
   const getId = async () => {
     try {
       const response = await getIdUser(`/${localStorage.getItem("idUser")}`);
       setgambar(response.data.data[0].karakter);
+      setpoint(response.data.data[0].point);
 
       console.log(response);
     } catch (error) {
@@ -171,6 +225,7 @@ function Profile() {
   useEffect(() => {
     getId();
   }, []);
+
   return (
     <div className="flex mx-28 gap-5 mt-14">
       <div className="w-1/13 px-4">
@@ -191,7 +246,9 @@ function Profile() {
                         ? Cewek
                         : gambar == "girl02"
                         ? Cewek2
-                        : Cewek3
+                        : gambar == "girl03"
+                        ? Cewek3
+                        : ""
                     }
                     className="shadow-xl rounded-full h-auto align-middle border-none max-w-150-px"
                     alt=""
@@ -205,7 +262,7 @@ function Profile() {
               </h3>
 
               <div className="mt-2 text-blueGray-600 mb-5">
-                Poin Belajar - {localStorage.getItem("point")}
+                Poin Belajar - {point}
               </div>
             </div>
           </div>

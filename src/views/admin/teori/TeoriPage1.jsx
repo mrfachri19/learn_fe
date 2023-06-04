@@ -32,7 +32,7 @@ function TeoriPage1() {
             </div>
 
             <div className="mt-4 mb-6">
-              <div className="text-base font-bold text-neutral-600 mb-3">
+              <div className="text-sm font-bold text-neutral-600 mb-3">
                 a. Pengertian HTML
               </div>
               <div className="text-sm text-neutral-600 mb-3">
@@ -83,30 +83,45 @@ function TeoriPage1() {
         onCancel={handleCancel}
       >
         <h1 className="font-bold my-3 text-xl">Berkenalan dengan HTML</h1>
-        <p className="font-semibold text-base my-2">1. Pengertian HTML</p>
-        <p className="font-semibold text-base my-2">2. Halaman Soal Modul 1 Soal 1</p>
-        <p className="font-semibold text-base my-2">3. Halaman Soal Modul 1 Soal 2</p>
-        <p className="font-semibold text-base my-2">4. Sejarah HTML</p>
-        <p className="font-semibold text-base my-2">5. Halaman Soal Modul 1 Soal 3</p>
-        <p className="font-semibold text-base my-2">6. Halaman Soal Modul 1 Soal 4</p>
-        <p className="font-semibold text-base my-2">7. Halaman Soal Modul 1 Soal 5</p>
-        <p className="font-semibold text-base my-2">8. Persiapan Tempur</p>
-        <p className="font-semibold text-base my-2">9. Halaman Soal Modul 2 Soal 1</p>
-        <p className="font-semibold text-base my-2">10. Halaman Soal Modul 2 Soal 2</p>
-        <p className="font-semibold text-base my-2">11. Halaman Soal Modul 2 Soal 3</p>
-        <p className="font-semibold text-base my-2">12. Halaman Soal Modul 2 Soal 4</p>
-        <p className="font-semibold text-base my-2">13. Halaman Soal Modul 2 Soal 5</p>
-        <p className="font-semibold text-base my-2">14. Struktur Dasar HTML</p>
-        <p className="font-semibold text-base my-2">15. Halaman Soal Modul 3 Soal 1</p>
-        <p className="font-semibold text-base my-2">16. Halaman Soal Modul 3 Soal 2</p>
-        <p className="font-semibold text-base my-2">17. Halaman Soal Modul 3 Soal 3</p>
-        <p className="font-semibold text-base my-2">18. Membuat Tabel Pada HTML</p>
-        <p className="font-semibold text-base my-2">15. Halaman Soal Modul 4 Soal 1</p>
-        <p className="font-semibold text-base my-2">15. Halaman Soal Modul 4 Soal 2</p>
-        <p className="font-semibold text-base my-2">15. Halaman Soal Modul 4 Soal 3</p>
-        <p className="font-semibold text-base my-2">15. Halaman Soal Modul 4 Soal 4</p>
-        <p className="font-semibold text-base my-2">15. Halaman Soal Modul 4 Soal 5</p>
-        <p className="font-semibold text-base my-2">15. Halaman Soal Modul 4 Soal 6</p>
+        <p className="font-semibold text-sm my-2">1. Pengertian HTML</p>
+        <p className="font-semibold text-sm my-2">2. Halaman Soal Modul 1 Soal 1</p>
+        <p className="font-semibold text-sm my-2">3. Halaman Soal Modul 1 Soal 2</p>
+        <p className="font-semibold text-sm my-2">4. Sejarah HTML</p>
+        <p className="font-semibold text-sm my-2">5. Halaman Soal Modul 1 Soal 3</p>
+        <p className="font-semibold text-sm my-2">6. Halaman Soal Modul 1 Soal 4</p>
+        <p className="font-semibold text-sm my-2">7. Halaman Soal Modul 1 Soal 5</p>
+        <p className="font-semibold text-sm my-2">8. Persiapan Tempur</p>
+        <p className="font-semibold text-sm my-2">9. Halaman Soal Modul 2 Soal 1</p>
+        <p className="font-semibold text-sm my-2">10. Halaman Soal Modul 2 Soal 2</p>
+        <p className="font-semibold text-sm my-2">11. Halaman Soal Modul 2 Soal 3</p>
+        <p className="font-semibold text-sm my-2">12. Halaman Soal Modul 2 Soal 4</p>
+        <p className="font-semibold text-sm my-2">13. Halaman Soal Modul 2 Soal 5</p>
+        <p className="font-semibold text-sm my-2">14. Struktur Dasar HTML</p>
+        <p className="font-semibold text-sm my-2">15. Halaman Soal Modul 3 Soal 1</p>
+        <p className="font-semibold text-sm my-2">16. Halaman Soal Modul 3 Soal 2</p>
+        <p className="font-semibold text-sm my-2">17. Halaman Soal Modul 3 Soal 3</p>
+        <p className="font-semibold text-sm my-2">18. Membuat Tabel Pada HTML</p>
+        <p className="font-semibold text-sm my-2">19. Halaman Soal Modul 4 Soal 1</p>
+        <p className="font-semibold text-sm my-2">20. Halaman Soal Modul 4 Soal 2</p>
+        <p className="font-semibold text-sm my-2">21. Halaman Soal Modul 4 Soal 3</p>
+        <p className="font-semibold text-sm my-2">22. Halaman Soal Modul 4 Soal 4</p>
+        <p className="font-semibold text-sm my-2">23. Halaman Soal Modul 4 Soal 5</p>
+        <p className="font-semibold text-sm my-2">24. Halaman Soal Modul 4 Soal 6</p>
+        <p className="font-semibold text-sm my-2">25. Halaman Soal Modul 4 Soal 7</p>
+        <p className="font-semibold text-sm my-2">26. Halaman Soal Modul 4 Soal 8</p>
+        <p className="font-semibold text-sm my-2">27. Formulir HTML</p>
+        <p className="font-semibold text-sm my-2">28. Halaman Soal Modul 5 Soal 1</p>
+        <p className="font-semibold text-sm my-2">29. Halaman Soal Modul 5 Soal 2</p>
+        <p className="font-semibold text-sm my-2">30. Halaman Soal Modul 5 Soal 3</p>
+        <p className="font-semibold text-sm my-2">31. Halaman Soal Modul 5 Soal 4</p>
+        <p className="font-semibold text-sm my-2">32. Halaman Soal Modul 5 Soal 5</p>
+        <p className="font-semibold text-sm my-2">33. Halaman Soal Modul 5 Soal 6</p>
+        <p className="font-semibold text-sm my-2">34. Halaman Soal Modul 5 Soal 7</p>
+        <p className="font-semibold text-sm my-2">35. HTML Lanjutan</p>
+        <p className="font-semibold text-sm my-2">36. Halaman Soal Modul 1 Soal 1</p>
+        <p className="font-semibold text-sm my-2">36. Halaman Soal Modul 1 Soal 2</p>
+        <p className="font-semibold text-sm my-2">36. Halaman Soal Modul 1 Soal 3</p>
+
       </Modal>
     </div>
   );

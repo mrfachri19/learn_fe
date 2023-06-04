@@ -21,7 +21,18 @@ export const LoginPage = () => {
       localStorage.setItem("email", response.data.data.email);
       localStorage.setItem("gender", response.data.data.char);
       localStorage.setItem("point", response.data.data.point);
-      updateUser(response.data.data.id, response.data.data.point)
+      if (
+        new Date().toLocaleTimeString() == "14:20:03" ||
+        new Date().toLocaleTimeString() == "14:20:04" ||
+        new Date().toLocaleTimeString() == "14:20:05" ||
+        new Date().toLocaleTimeString() == "14:20:06" ||
+        new Date().toLocaleTimeString() == "14:20:07" ||
+        new Date().toLocaleTimeString() == "14:20:08" ||
+        new Date().toLocaleTimeString() == "14:20:09" ||
+        new Date().toLocaleTimeString() == "14:20:10" 
+      ) {
+        updateUser(response.data.data.id, response.data.data.point);
+      }
       Messaege("Succes", "Success Login, you get new point", "success");
       setTimeout(() => {
         history.push("/admin");
@@ -34,14 +45,10 @@ export const LoginPage = () => {
   };
   const updateUser = async (id, point) => {
     try {
-      const response = await updateUserPoint(
-        `/${id}`,
-        {
-          point: point + 50,
-        }
-      );
+      const response = await updateUserPoint(`/${id}`, {
+        point: point + 50,
+      });
       console.log(response);
-      
     } catch (error) {
       console.log(error);
       Messaege("Failed", `${error}`, "error");

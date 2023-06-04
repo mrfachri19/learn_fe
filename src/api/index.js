@@ -80,7 +80,9 @@ export const updateKarakter = patch("auth/gambar");
 export const getIdUserProgress = get("progress-html");
 export const PostProgressUser = post("progress-html");
 export const updateProgressUser = patch("progress-html");
-
+export const getIdUserProgresscss = get("progress-css");
+export const PostProgressUsercss = post("progress-css");
+export const updateProgressUsercss = patch("progress-css");
 // ===============
 export const getidShop = get("shop");
 export const postShopuser = post("shop");
@@ -99,7 +101,11 @@ const API = {
   updateShopuser,
   updateUserPoint,
   updateKarakter,
-  updateShopuserKarakter
+  updateShopuserKarakter,
+  // =====================
+  getIdUserProgresscss,
+  PostProgressUsercss,
+  updateProgressUsercss
 };
 
 export default API;

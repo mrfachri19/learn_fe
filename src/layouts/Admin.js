@@ -58,6 +58,25 @@ import TeoriPage17 from "../views/admin/teori/TeoriPage17";
 import SoalHtml1 from "../views/admin/soal/SoalHtml1";
 import SoalHtml2 from "../views/admin/soal/SoalHtml2";
 import SoalHtml3 from "../views/admin/soal/SoalHtml3";
+import TeoricssPage from "../views/admin/teoricss/teoricss";
+import Soalcss1 from "../views/admin/soalcss/Soalcss1";
+import Soalcss2 from "../views/admin/soalcss/Soalcss2";
+import Teoricss1 from "../views/admin/teoricss/Teoricss1";
+import Soalcss3 from "../views/admin/soalcss/Soalcss3";
+import Soalcss4 from "../views/admin/soalcss/Soalcss4";
+import Soalcss5 from "../views/admin/soalcss/Soalcss5";
+import Teoricss2 from "../views/admin/teoricss/Teoricss2";
+import SoalImplement1 from "../views/admin/soalcss/SoalImplement1";
+import SoalImplement2 from "../views/admin/soalcss/SoalImplement2";
+import SoalImplement3 from "../views/admin/soalcss/SoalImplement3";
+import SoalImplement4 from "../views/admin/soalcss/SoalImplement4";
+import SoalImplement5 from "../views/admin/soalcss/SoalImplement5";
+import Teoricss3 from "../views/admin/teoricss/Teoricss3";
+import SoalProperti1 from "../views/admin/soalcss/SoalProperti1";
+import SoalProperti3 from "../views/admin/soalcss/SoalProperti3";
+import SoalProperti2 from "../views/admin/soalcss/SoalProperti2";
+import SoalProperti4 from "../views/admin/soalcss/SoalProperti4";
+import SoalProperti5 from "../views/admin/soalcss/SoalProperti5";
 
 export default function Admin() {
  
@@ -128,8 +147,29 @@ export default function Admin() {
               <Route path="/admin/soal-html1" exact component={SoalHtml1} />
               <Route path="/admin/soal-html2" exact component={SoalHtml2} />
               <Route path="/admin/soal-html3" exact component={SoalHtml3} />
-
               {/* ----------------------------------------------------------- */}
+              <Route path="/admin/teoricss-1" exact component={TeoricssPage} />
+              <Route path="/admin/soalcss-1" exact component={Soalcss1} />
+              <Route path="/admin/soalcss-2" exact component={Soalcss2} />
+              <Route path="/admin/teoricss-2" exact component={Teoricss1} />
+              <Route path="/admin/soalcss-3" exact component={Soalcss3} />
+              <Route path="/admin/soalcss-4" exact component={Soalcss4} />
+              <Route path="/admin/soalcss-5" exact component={Soalcss5} />
+              <Route path="/admin/teoricss-3" exact component={Teoricss2} />
+
+              <Route path="/admin/soalimpl-1" exact component={SoalImplement1} />
+              <Route path="/admin/soalimpl-2" exact component={SoalImplement2} />
+              <Route path="/admin/soalimpl-3" exact component={SoalImplement3} />
+              <Route path="/admin/soalimpl-4" exact component={SoalImplement4} />
+              <Route path="/admin/soalimpl-5" exact component={SoalImplement5} />
+
+              <Route path="/admin/teoricss-4" exact component={Teoricss3} />
+              <Route path="/admin/soalproperti-1" exact component={SoalProperti1} />
+              <Route path="/admin/soalproperti-2" exact component={SoalProperti2} />
+              <Route path="/admin/soalproperti-3" exact component={SoalProperti3} />
+              <Route path="/admin/soalproperti-4" exact component={SoalProperti4} />
+              <Route path="/admin/soalproperti-5" exact component={SoalProperti5} />
+
               <Route path="/admin/css" exact component={CssPage} />
 
               <Redirect from="/admin" to="/admin" />

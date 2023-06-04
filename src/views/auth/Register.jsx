@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import logo from "../../assets/images/logolearn.svg";
 import { Messaege } from "../../helper/helper";
-import { PostProgressUser, postShopuser, register } from "../../api";
+import { PostProgressUser, PostProgressUsercss, postShopuser, register } from "../../api";
 import { Modal } from "antd";
 import Laki from "../../assets/images/laki.png";
 import Cewek from "../../assets/images/cewek.png";
@@ -33,6 +33,7 @@ export const RegisterPage = () => {
         });
         Messaege("Succes", "Success Register", "success");
         Postprogress(response.data.data.id);
+        Postprogresscss(response.data.data.id);
         postShopUser(response.data.data.id);
         setTimeout(() => {
           history.push("auth/login");
@@ -82,6 +83,20 @@ export const RegisterPage = () => {
         progress4: 0,
         progress5: 0,
         progress6: 0,
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
+  const Postprogresscss = async (id) => {
+    try {
+      const response = await PostProgressUsercss({
+        idUser: id,
+        progress1: 0,
+        progress2: 0,
+        progress3: 0,
       });
       console.log(response);
     } catch (error) {

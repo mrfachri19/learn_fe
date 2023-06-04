@@ -1,14 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Send20Filled } from "@fluentui/react-icons";
-import { Messaege } from "../../../helper/helper";
-import { updateProgressUser, updateUserPoint } from "../../../api";
+import { Messaege, ModalBerhasil } from "../../../helper/helper";
+import { getIdUser, updateProgressUser, updateUserPoint } from "../../../api";
+import berhasil from "../../../assets/images/badgeLearn-Perkenalan.png"
 function Soal5() {
   const history = useHistory();
-  const jawaban = "Standar Generalized Markup Language";
+  const jawaban = "Standard Generalized Markup Language";
   const [text, setText] = useState("");
   const [sukses, setSukses] = useState();
+  const [point, setpoint] = useState("");
 
+  const getId = async () => {
+    try {
+      const response = await getIdUser(`/${localStorage.getItem("idUser")}`);
+      setpoint(response.data.data[0].point);
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getId();
+  }, []);
+  
   const Submit = () => {
     if (text == jawaban) {
       Messaege("Succes", "jawaban benar", "success");
@@ -42,7 +59,7 @@ function Soal5() {
       const response = await updateUserPoint(
         `/${localStorage.getItem("idUser")}`,
         {
-          point: 1000,
+          point: point + 1000,
         }
       );
       console.log(response);
@@ -53,7 +70,7 @@ function Soal5() {
   };
 
   const suksesModul = () =>  {
-    Messaege("Succes", "Selamat anda telah menyelesaikan modul", "success");
+    ModalBerhasil(berhasil);
   }
   return (
     <>
@@ -101,7 +118,7 @@ function Soal5() {
           </a>
         </Link>
         {sukses == 200 ? (
-          <Link to="/admin/teori">
+          <Link to="/admin/html">
             <a
               target="_blank"
               className="block w-28 px-4 py-3 text-sm font-medium tracking-wide text-center transition-colors duration-300 transform bg-slate-100 rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
