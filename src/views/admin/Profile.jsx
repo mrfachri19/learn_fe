@@ -12,12 +12,12 @@ import medali4 from "../../assets/images/badgeLearn-Tabel.png";
 import medali5 from "../../assets/images/badgeLearn-FormulirHTML.png";
 import medali6 from "../../assets/images/badgeLearn-HTMLLanjutan.png";
 
-import medali7 from "../../assets/images/badgeLearn-Perkenalan (1).png"
-import medali8 from "../../assets/images/badgeLearn-IntegrasiCSSHTML.png"
-import medali9 from "../../assets/images/badgeLearn-FormulirHTML (1).png"
+import medali7 from "../../assets/images/badgeLearn-Perkenalan (1).png";
+import medali8 from "../../assets/images/badgeLearn-IntegrasiCSSHTML.png";
+import medali9 from "../../assets/images/badgeLearn-FormulirHTML (1).png";
 
 import { getIdUser, getIdUserProgress, getIdUserProgresscss } from "../../api";
-import { Tabs } from "antd";
+import { Progress, Tabs } from "antd";
 import { Messaege } from "../../helper/helper";
 
 const Tab1 = () => {
@@ -81,6 +81,29 @@ const Tab2 = () => {
 
   const progressHtml =
     progress + progress3 + progress2 + progress4 + progress5 + progress6;
+
+  const [progress11, setprogress11] = useState();
+  const [progress22, setprogress22] = useState();
+  const [progress33, setprogress33] = useState();
+  const getIdprogresscss = async () => {
+    try {
+      const response = await getIdUserProgresscss(
+        `/${localStorage.getItem("idUser")}`
+      );
+      console.log(response);
+      setprogress11(response.data.data[0].progress1);
+      setprogress22(response.data.data[0].progress2);
+      setprogress33(response.data.data[0].progress3);
+    } catch (error) {
+      console.log(error);
+      Messaege("Failed", `${error}`, "error");
+    }
+  };
+  useEffect(() => {
+    getIdprogresscss();
+  }, []);
+
+  const progresscss = progress11 + progress22 + progress33;
   return (
     <>
       <div class="mt-4 mb-6">
@@ -89,19 +112,79 @@ const Tab2 = () => {
           {" "}
           <div class="text-lg text-neutral-600 mr-5">Html:</div>
           <div class="text-lg text-neutral-600">
-            {progressHtml >= 600
-              ? "100%"
-              : progressHtml > 200 && progressHtml < 400
-              ? "50%"
-              : progressHtml == 0
-              ? "0"
-              : "20%"}
+            {progressHtml >= 600 ? (
+              <Progress
+                percent={100}
+                size="small"
+                style={{
+                  width: 170,
+                }}
+              />
+            ) : progressHtml > 200 && progressHtml < 400 ? (
+              <Progress
+                percent={50}
+                size="small"
+                style={{
+                  width: 170,
+                }}
+              />
+            ) : progressHtml == 0 ? (
+              <Progress
+                percent={0}
+                size="small"
+                style={{
+                  width: 170,
+                }}
+              />
+            ) : (
+              <Progress
+                percent={20}
+                size="small"
+                style={{
+                  width: 170,
+                }}
+              />
+            )}
           </div>
         </div>
         <div className="flex">
           {" "}
           <div class="text-lg text-neutral-600 mr-5">CSS:</div>
-          <div class="text-lg text-neutral-600">0 </div>
+          <div class="text-lg text-neutral-600">
+            {progresscss >= 600 ? (
+              <Progress
+                percent={100}
+                size="small"
+                style={{
+                  width: 170,
+                }}
+              />
+            ) : progresscss > 200 && progresscss < 400 ? (
+              <Progress
+                percent={50}
+                size="small"
+                style={{
+                  width: 170,
+                }}
+              />
+            ) : progresscss == 0 ? (
+              <Progress
+                percent={0}
+                size="small"
+                style={{
+                  width: 170,
+                }}
+              />
+            ) : (
+              <Progress
+                percent={20}
+                size="small"
+                style={{
+                  width: 170,
+                }}
+              />
+            )}
+          </div>
         </div>
       </div>
     </>
@@ -165,16 +248,51 @@ const Pencapaian = () => {
           Pencapaian {localStorage.getItem("nama")}:{" "}
         </div>
         <div class="mb-3 flex gap-3">
-          {progress ? ( <img src={medali1} alt="" className="w-28 h-28" /> ) : (<></>)}
-          {progress2 ? ( <img src={medali2} alt="" className="w-28 h-28" /> ) : (<></>)}
-          {progress3 ? ( <img src={medali3} alt="" className="w-28 h-28" /> ) : (<></>)}
-          {progress4 ? ( <img src={medali4} alt="" className="w-28 h-28" /> ) : (<></>)}
-          {progress5 ? ( <img src={medali5} alt="" className="w-28 h-28" /> ) : (<></>)}
-          {progress6 ? ( <img src={medali6} alt="" className="w-28 h-28" /> ) : (<></>)}
-          {progress11 ? ( <img src={medali7} alt="" className="w-28 h-28" /> ) : (<></>)}
-          {progress22 ? ( <img src={medali8} alt="" className="w-28 h-28" /> ) : (<></>)}
-          {progress33 ? ( <img src={medali9} alt="" className="w-28 h-28" /> ) : (<></>)}
-
+          {progress ? (
+            <img src={medali1} alt="" className="w-28 h-28" />
+          ) : (
+            <></>
+          )}
+          {progress2 ? (
+            <img src={medali2} alt="" className="w-28 h-28" />
+          ) : (
+            <></>
+          )}
+          {progress3 ? (
+            <img src={medali3} alt="" className="w-28 h-28" />
+          ) : (
+            <></>
+          )}
+          {progress4 ? (
+            <img src={medali4} alt="" className="w-28 h-28" />
+          ) : (
+            <></>
+          )}
+          {progress5 ? (
+            <img src={medali5} alt="" className="w-28 h-28" />
+          ) : (
+            <></>
+          )}
+          {progress6 ? (
+            <img src={medali6} alt="" className="w-28 h-28" />
+          ) : (
+            <></>
+          )}
+          {progress11 ? (
+            <img src={medali7} alt="" className="w-28 h-28" />
+          ) : (
+            <></>
+          )}
+          {progress22 ? (
+            <img src={medali8} alt="" className="w-28 h-28" />
+          ) : (
+            <></>
+          )}
+          {progress33 ? (
+            <img src={medali9} alt="" className="w-28 h-28" />
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>

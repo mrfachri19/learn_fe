@@ -37,7 +37,7 @@ function LeaderBoard() {
       var temp = [];
       temp = response?.data?.data;
       let temps = temp.filter((item, index) => {
-        return index > 2;
+        return index > 2 && index < 10;
       });
       console.log(temps);
       setUser1(temps);

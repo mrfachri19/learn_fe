@@ -33,7 +33,9 @@ function PilihanBelajar() {
 
   useEffect(() => {
     getId();
-    showModal();
+    if (localStorage.getItem("point") == 0) {
+      showModal();
+    }
   }, []);
   return (
     <>
@@ -93,13 +95,14 @@ function PilihanBelajar() {
                 <p className="font-bold text-sm text-black">45 soal</p>
               </div>
 
-              <a
-                target="_blank"
-                href="/admin/css"
-                className="block mt-10 w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform bg-[#FFC933] rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
-              >
-                Belajar
-              </a>
+              <Link to="/admin/css">
+                <a
+                  target="_blank"
+                  className="block mt-10 w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform bg-[#FFC933] rounded-[14px] hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
+                >
+                  Belajar
+                </a>
+              </Link>
             </div>
           </div>
         </div>
